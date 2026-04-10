@@ -24,6 +24,9 @@ jobs:
         with:
           bun-version: 1.2.23
 
+      - name: Verify tracked release files
+        run: npm run verify:release
+
       - name: Pack npm tarball
         run: npm pack
 
@@ -39,3 +42,5 @@ jobs:
         run: |
           command -v soma
           soma --version
+          soma --help > /tmp/soma-help.txt
+          test -s /tmp/soma-help.txt

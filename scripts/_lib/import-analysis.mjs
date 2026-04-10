@@ -40,6 +40,11 @@ function normalizePath(value) {
   return value.replaceAll(path.sep, '/').replace(/\/+/g, '/')
 }
 
+function normalizeInternalTarget(value) {
+  const normalized = normalizePath(value)
+  return normalized.endsWith('/') ? normalized.slice(0, -1) : normalized
+}
+
 function stripKnownExtension(specifier) {
   const ext = path.extname(specifier)
   return SOURCE_EXTENSIONS.has(ext) ? specifier.slice(0, -ext.length) : specifier
@@ -85,10 +90,13 @@ async function walkImportableAssets(rootDir, currentDir, output) {
 
 function extractImportSpecifiers(source) {
   const matches = []
+  const withoutComments = source
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/(^|[^\\:])\/\/.*$/gm, '$1')
   const pattern =
     /(?:import\s+(?:type\s+)?(?:[^'"`]*?\s+from\s*)?['"]([^'"]+)['"]|export\s+(?:type\s+)?(?:[^'"`]*?\s+from\s*)?['"]([^'"]+)['"]|import\(\s*['"]([^'"]+)['"]\s*\)|require\(\s*['"]([^'"]+)['"]\s*\))/g
-
-  for (const match of source.matchAll(pattern)) {
+  
+  for (const match of withoutComments.matchAll(pattern)) {
     const specifier = match[1] || match[2] || match[3] || match[4]
     if (specifier) {
       matches.push(specifier)
@@ -126,7 +134,7 @@ function resolveInternalTarget(fromFile, specifier) {
   const cleaned = normalizeSpecifier(specifier)
 
   if (cleaned.startsWith('src/') || cleaned.startsWith('vendor/')) {
-    return stripKnownExtension(cleaned)
+    return normalizeInternalTarget(stripKnownExtension(cleaned))
   }
 
   if (!cleaned.startsWith('./') && !cleaned.startsWith('../')) {
@@ -141,7 +149,7 @@ function resolveInternalTarget(fromFile, specifier) {
     return null
   }
 
-  return stripKnownExtension(resolved)
+  return normalizeInternalTarget(stripKnownExtension(resolved))
 }
 
 function isLikelyPackageSpecifier(specifier) {

@@ -43,7 +43,8 @@
     "build": "tsc -p tsconfig.build.json",
     "scan:missing": "node scripts/scan-missing-internal.mjs",
     "scan:deps": "node scripts/scan-external-deps.mjs",
-    "verify:snapshot": "node scripts/verify-snapshot.mjs"
+    "verify:snapshot": "node scripts/verify-snapshot.mjs",
+    "verify:release": "node scripts/verify-release-tracking.mjs"
   },
   "dependencies": {
     "@alcalzone/ansi-tokenize": "0.3.0",

@@ -23,6 +23,7 @@ const requiredPaths = [
   'types/native-modules.d.ts',
   'scripts/scan-missing-internal.mjs',
   'scripts/scan-external-deps.mjs',
+  'scripts/verify-release-tracking.mjs',
   'scripts/verify-snapshot.mjs',
   'scripts/run-source-cli.mjs',
   'src',
