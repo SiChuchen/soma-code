@@ -24,7 +24,6 @@
     "soma-code": "./bin/soma-code.js"
   },
   "scripts": {
-    "postinstall": "node -e \"console.warn('[soma:postinstall] Skipping bundled Bun download during npm install. soma will resolve Bun from PATH, SOMA_BUN_BIN, local installs, or auto-download it on first run if needed.')\"",
     "typecheck": "tsc -p tsconfig.check.json",
     "build": "tsc -p tsconfig.build.json",
     "scan:missing": "node scripts/scan-missing-internal.mjs",
@@ -106,6 +105,7 @@
     "picomatch": "4.0.4",
     "playwright": "^1.59.1",
     "plist": "3.1.0",
+    "protobufjs": "file:vendor/protobufjs-src",
     "proper-lockfile": "4.1.2",
     "qrcode": "1.5.4",
     "react": "19.2.4",

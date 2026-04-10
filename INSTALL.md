@@ -75,6 +75,12 @@ Recommended:
 npm install -g github:SiChuchen/soma-code
 ```
 
+If you are installing on a minimal Linux image and do not need optional native image tooling, this variant skips optional dependencies:
+
+```bash
+npm install -g --omit=optional github:SiChuchen/soma-code
+```
+
 Verify after installation:
 
 ```bash
@@ -116,6 +122,34 @@ npm install -g ./soma-code-1.0.0.tgz
 ```
 
 If you expect a global `soma` command, do not use `npm install .` as a project dependency install inside another repo. Use a global install flow instead.
+
+## Troubleshooting
+
+### `npm ERR! spawn sh ENOENT`
+
+This error comes from npm being unable to launch a POSIX shell for dependency lifecycle scripts. It is not a `soma` runtime crash.
+
+On Linux, check:
+
+```bash
+command -v sh
+echo "$PATH"
+npm config get script-shell
+```
+
+If `npm config get script-shell` prints a missing path, reset it:
+
+```bash
+npm config delete script-shell
+```
+
+If your image has an incomplete `PATH`, make sure it includes standard shell locations such as `/bin` and `/usr/bin`.
+
+Current GitHub installs of this repo avoid required install scripts for `soma` itself and its required `protobufjs` dependency. If you still need a shell-free fallback on a minimal image, prefer:
+
+```bash
+npm install -g --omit=optional github:SiChuchen/soma-code
+```
 
 ## Recommended first run
 

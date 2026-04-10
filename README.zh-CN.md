@@ -297,6 +297,12 @@ bun --version
 npm install -g github:SiChuchen/soma-code
 ```
 
+如果你使用的是精简 Linux 镜像，并且安装阶段不需要可选的原生图像处理依赖，也可以用下面这个命令跳过可选依赖：
+
+```bash
+npm install -g --omit=optional github:SiChuchen/soma-code
+```
+
 安装后可直接运行：
 
 ```bash
@@ -330,6 +336,26 @@ npm install -g ./soma-code-1.0.0.tgz
 如果你希望得到全局 `soma` 命令，不要使用 `npm install .`。这个命令只会把当前目录作为依赖安装到项目里，不会把 CLI 暴露成全局命令。
 
 更多安装说明见 [INSTALL.md](./INSTALL.md)。
+
+### `npm ERR! spawn sh ENOENT` 排查
+
+这个错误表示 npm 在执行依赖生命周期脚本时无法启动 `sh`，不是 `soma` 运行时本身崩溃。
+
+先检查：
+
+```bash
+command -v sh
+echo "$PATH"
+npm config get script-shell
+```
+
+如果 `npm config get script-shell` 输出的是一个不存在的路径，可以重置它：
+
+```bash
+npm config delete script-shell
+```
+
+如果你用的是精简 Linux 镜像，还需要确认 `PATH` 中包含 `/bin` 和 `/usr/bin`。当前仓库已经去掉了 `soma` 本身以及必需依赖 `protobufjs` 的必经安装脚本；如果你还想进一步规避可选原生依赖的安装脚本，可以继续使用 `--omit=optional` 安装。
 
 ## 快速开始
 
