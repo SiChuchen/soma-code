@@ -50,9 +50,6 @@ test/
 # Internal working materials — do not publish
 .ai-workflow/
 analyze/
-else/
-plan/
-docs/
 AGENTS.md
 
 # Environment / secrets
