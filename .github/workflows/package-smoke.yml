@@ -38,6 +38,11 @@ jobs:
           echo "$NPM_CONFIG_PREFIX/bin" >> "$GITHUB_PATH"
           npm install -g --omit=optional ./soma-code-*.tgz
 
+      - name: Reinstall packed tarball in same prefix
+        env:
+          NPM_CONFIG_PREFIX: ${{ runner.temp }}/npm-prefix
+        run: npm install -g --omit=optional ./soma-code-*.tgz
+
       - name: Verify CLI
         run: |
           command -v soma
