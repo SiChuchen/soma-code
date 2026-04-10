@@ -44,7 +44,7 @@ function ModelPickerWrapper(t0) {
   const setAppState = useSetAppState();
   const inferenceModelPickerState = React.useMemo(() => getInferenceModelPickerStateFromSettings(settings), [settings]);
   const inferenceModelOptions = inferenceModelPickerState.options;
-  const inferenceModelInitial = React.useMemo(() => normalizeInferenceModelSelection(inferenceModelPickerState.editableInference, mainLoopModel) ?? inferenceModelPickerState.editableInference.defaults?.modelId ?? inferenceModelOptions[0]?.value ?? null, [inferenceModelOptions, inferenceModelPickerState.editableInference, mainLoopModel]);
+  const inferenceModelInitial = React.useMemo(() => normalizeInferenceModelSelection(inferenceModelPickerState.editableInference, mainLoopModelForSession ?? mainLoopModel) ?? inferenceModelPickerState.editableInference.defaults?.modelId ?? inferenceModelOptions[0]?.value ?? null, [inferenceModelPickerState.editableInference, inferenceModelOptions, mainLoopModel, mainLoopModelForSession]);
   const inferenceRemoteModelResolver = React.useMemo(() => {
     if (!inferenceModelPickerState.shouldUseInferenceModelPicker) {
       return undefined;
@@ -59,12 +59,12 @@ function ModelPickerWrapper(t0) {
       }
       return remoteModelsById.get(model);
     };
-  }, [inferenceModelOptions, inferenceModelPickerState.editableInference, inferenceModelPickerState.shouldUseInferenceModelPicker]);
+  }, [inferenceModelPickerState.editableInference, inferenceModelPickerState.shouldUseInferenceModelPicker, inferenceModelOptions]);
   function handleCancel(): void {
     logEvent("tengu_model_command_menu", {
       action: "cancel" as AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS
     });
-    const displayModel = renderModelLabel(mainLoopModel, inferenceModelPickerState);
+    const displayModel = renderModelLabel(mainLoopModelForSession ?? mainLoopModel, inferenceModelPickerState);
     onDone(`Kept model as ${chalk.bold(displayModel)}`, {
       display: "system"
     });
@@ -102,11 +102,11 @@ function ModelPickerWrapper(t0) {
     }
     onDone(message);
   }
-  const showFastModeNotice = isFastModeEnabled() && isFastMode && isFastModeSupportedByModel(mainLoopModel) && isFastModeAvailable();
+  const showFastModeNotice = isFastModeEnabled() && isFastMode && isFastModeSupportedByModel(mainLoopModelForSession ?? mainLoopModel) && isFastModeAvailable();
   if (inferenceModelPickerState.shouldUseInferenceModelPicker) {
     return <InferenceModelPicker initial={inferenceModelInitial} options={inferenceModelOptions} onSelect={(model, effort) => {
       handleSelect(model, effort);
-    }} onCancel={handleCancel} isStandaloneCommand={true} headerText="Select the default model from the models currently configured for the active provider route." resolveEffortModel={inferenceRemoteModelResolver} />;
+    }} onCancel={handleCancel} isStandaloneCommand={true} headerText="Select a model from all configured endpoints." resolveEffortModel={inferenceRemoteModelResolver} />;
   }
   return <ModelPicker initial={mainLoopModel} sessionModel={mainLoopModelForSession} onSelect={handleSelect} onCancel={handleCancel} isStandaloneCommand={true} showFastModeNotice={showFastModeNotice} />;
 }
@@ -135,6 +135,8 @@ function SetModelAndClose({
   }) => void;
 }): React.ReactNode {
   const isFastMode = useAppState(s => s.fastMode);
+  const mainLoopModel = useAppState(s => s.mainLoopModel);
+  const mainLoopModelForSession = useAppState(s => s.mainLoopModelForSession);
   const settings = useAppState(s => s.settings);
   const setAppState = useSetAppState();
   const model = args === 'default' ? null : args;
@@ -147,7 +149,7 @@ function SetModelAndClose({
         return;
       }
       if (model && inferenceModelPickerState.shouldUseInferenceModelPicker) {
-        onDone(`Model '${model}' is not configured for the active provider.`, {
+        onDone(`Model '${model}' is not configured. Use /config to add it.`, {
           display: 'system'
         });
         return;
