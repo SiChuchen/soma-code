@@ -1,0 +1,69 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Lock files (project uses bun, npm lock is local-only)
+package-lock.json
+
+# Bun
+bun.lockb
+bun.lock
+bunfig.toml
+
+# Vendor bun binary (downloaded by postinstall)
+vendor/bun/
+
+# Coverage
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Soma runtime state (per-user, per-machine)
+.soma/
+
+# Claude Code session state
+.claude/
+
+# Test artifacts
+test/
+
+# Cache
+.cache/
+
+# Internal working materials — do not publish
+.ai-workflow/
+analyze/
+else/
+plan/
+docs/
+AGENTS.md
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+*.secret
+*.key
+*.pem
+*.p12
+credentials*
+
+# CCG worktree artifacts
+.ccg/

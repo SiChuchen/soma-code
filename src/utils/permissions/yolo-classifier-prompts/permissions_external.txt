@@ -1,0 +1,14 @@
+<user_allow_rules_to_replace>
+- Read files in the current workspace.
+- Run safe project-local inspection commands.
+</user_allow_rules_to_replace>
+
+<user_deny_rules_to_replace>
+- Modify files outside the workspace without explicit approval.
+- Run destructive shell commands without explicit approval.
+</user_deny_rules_to_replace>
+
+<user_environment_to_replace>
+- Working directory: current repository root.
+- Network and sandbox access may be restricted by policy.
+</user_environment_to_replace>

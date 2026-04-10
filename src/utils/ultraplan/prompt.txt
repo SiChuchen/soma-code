@@ -1,0 +1,6 @@
+<system-reminder>
+The original ultraplan instructions were not present in this extracted
+snapshot. Work conservatively: produce a structured plan, keep execution
+targets explicit, and prefer direct verification steps over speculative
+automation.
+</system-reminder>
