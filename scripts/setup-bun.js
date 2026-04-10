@@ -10,15 +10,46 @@
  * The downloaded binary is gitignored and per-platform.
  */
 
-import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, unlinkSync, writeFileSync } from 'node:fs'
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  renameSync,
+  unlinkSync,
+  writeFileSync,
+} from 'node:fs'
 import { execSync } from 'node:child_process'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const BUN_VERSION = '1.2.23'
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const repoRoot = path.resolve(__dirname, '..')
+const scriptDir = path.dirname(fileURLToPath(import.meta.url))
+const repoRoot = path.resolve(scriptDir, '..')
 const vendorDir = path.join(repoRoot, 'vendor', 'bun')
+
+function hasUsableCwd() {
+  try {
+    process.cwd()
+    return true
+  } catch {
+    return false
+  }
+}
+
+if (!hasUsableCwd()) {
+  try {
+    process.chdir(repoRoot)
+  } catch {
+    console.warn(
+      '[soma:postinstall] Skipping bun setup because npm invoked postinstall with an invalid working directory.',
+    )
+    console.warn(
+      '[soma:postinstall] Install Bun manually or let soma resolve/download Bun at first run.',
+    )
+    process.exit(0)
+  }
+}
 
 // Platform detection
 function getPlatformInfo() {
@@ -54,7 +85,6 @@ function isVendorBunReady(exeName) {
   const bunPath = path.join(vendorDir, exeName)
   if (!existsSync(bunPath)) return false
 
-  // Version marker file
   const versionFile = path.join(vendorDir, '.version')
   if (existsSync(versionFile)) {
     const version = readFileSync(versionFile, 'utf8').trim()
@@ -88,9 +118,11 @@ function downloadAndExtract(url, exeName) {
         timeout: 180_000,
       })
     } else {
-      execSync(`curl -fsSL '${url}' -o '${zipPath}'`, { stdio: 'inherit', timeout: 180_000 })
+      execSync(`curl -fsSL '${url}' -o '${zipPath}'`, {
+        stdio: 'inherit',
+        timeout: 180_000,
+      })
       execSync(`unzip -o -q '${zipPath}' -d '${vendorDir}'`, { stdio: 'inherit' })
-      // Move nested binary to vendor root
       for (const entry of readdirSync(vendorDir, { withFileTypes: true })) {
         if (entry.isDirectory() && entry.name.startsWith('bun-')) {
           const nested = path.join(vendorDir, entry.name, exeName)
@@ -99,31 +131,38 @@ function downloadAndExtract(url, exeName) {
           }
         }
       }
-      try { unlinkSync(zipPath) } catch { /* ignore */ }
+      try {
+        unlinkSync(zipPath)
+      } catch {
+        // ignore
+      }
     }
 
-    // Write version marker
     writeFileSync(path.join(vendorDir, '.version'), BUN_VERSION)
     console.log(`[soma:postinstall] bun v${BUN_VERSION} ready at vendor/bun/${exeName}`)
   } catch (err) {
-    console.warn(`[soma:postinstall] Failed to download bun: ${err.message}`)
-    console.warn(`[soma:postinstall] soma will attempt auto-download at first run, or set SOMA_BUN_BIN manually.`)
-    // Non-fatal — soma.js will try again at runtime
+    const message = err instanceof Error ? err.message : String(err)
+    console.warn(`[soma:postinstall] Failed to download bun: ${message}`)
+    console.warn(
+      '[soma:postinstall] soma will attempt auto-download at first run, or set SOMA_BUN_BIN manually.',
+    )
   }
 }
 
-// ── Main ──────────────────────────────────────────────────────────
-
 const info = getPlatformInfo()
 if (!info) {
-  console.warn(`[soma:postinstall] Unsupported platform: ${process.platform}-${process.arch}, skipping bun download.`)
+  console.warn(
+    `[soma:postinstall] Unsupported platform: ${process.platform}-${process.arch}, skipping bun download.`,
+  )
   process.exit(0)
 }
 
 const { url, exeName } = info
 
 if (isVendorBunReady(exeName)) {
-  console.log(`[soma:postinstall] vendor/bun/${exeName} (v${BUN_VERSION}) already exists, skipping download.`)
+  console.log(
+    `[soma:postinstall] vendor/bun/${exeName} (v${BUN_VERSION}) already exists, skipping download.`,
+  )
   process.exit(0)
 }
 
