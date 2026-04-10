@@ -23,6 +23,21 @@
     "somacode": "./bin/somacode.js",
     "soma-code": "./bin/soma-code.js"
   },
+  "files": [
+    "bin/**",
+    "scripts/run-source-cli.mjs",
+    "src/**",
+    "types/**",
+    "vendor/audio-capture-napi-src/**",
+    "vendor/claude-for-chrome-mcp-src/**",
+    "vendor/color-diff-napi-src/**",
+    "vendor/image-processor-napi-src/**",
+    "vendor/mcpb-src/**",
+    "vendor/modifiers-napi-src-js/**",
+    "vendor/protobufjs-src/**",
+    "vendor/sandbox-runtime-src/**",
+    "vendor/url-handler-napi-src-js/**"
+  ],
   "scripts": {
     "typecheck": "tsc -p tsconfig.check.json",
     "build": "tsc -p tsconfig.build.json",

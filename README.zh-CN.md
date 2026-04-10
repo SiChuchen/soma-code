@@ -289,18 +289,34 @@ bun --version
 
 依赖准备完成后，Windows 和 Linux 的 `soma` 安装方式相同。
 
-### 方式一：通过 npm 直接从 GitHub 仓库安装
+### 方式一：从 npm registry 安装
 
-推荐安装命令：
+公开发布到 npm 后，优先使用这个安装方式：
 
 ```bash
-npm install -g github:SiChuchen/soma-code
+npm install -g soma-code
+```
+
+### 方式二：从打包好的 `.tgz` 发布产物安装
+
+在 npm 包尚未发布，或者你希望走 tarball 安装路径时，优先使用这个方式。
+
+如果你想安装当前仓库的最新快照，但又不想走 `github:` 这条 git 依赖链路，可以直接安装 GitHub archive tarball：
+
+```bash
+npm install -g https://github.com/SiChuchen/soma-code/archive/refs/heads/master.tar.gz
+```
+
+如果你希望固定到某个已经打好的发布产物：
+
+```bash
+npm install -g ./soma-code-1.0.3.tgz
 ```
 
 如果你使用的是精简 Linux 镜像，并且安装阶段不需要可选的原生图像处理依赖，也可以用下面这个命令跳过可选依赖：
 
 ```bash
-npm install -g --omit=optional github:SiChuchen/soma-code
+npm install -g --omit=optional ./soma-code-1.0.3.tgz
 ```
 
 安装后可直接运行：
@@ -318,7 +334,9 @@ somacode --help
 soma-code --help
 ```
 
-### 方式二：本地安装
+### 方式三：本地源码安装
+
+这个路径更适合贡献者和本地调试，不适合作为终端用户的默认安装方式。
 
 如果你已经把仓库源码下载到本地，可以直接从本地目录安装：
 
@@ -327,19 +345,23 @@ cd soma-code
 npm install -g .
 ```
 
-如果你拿到的是已经打好的包，例如 `soma-code-1.0.0.tgz`，也可以直接安装：
+如果你希望得到全局 `soma` 命令，不要使用 `npm install .`。这个命令只会把当前目录作为依赖安装到项目里，不会把 CLI 暴露成全局命令。
+
+### 不推荐
+
+避免使用：
 
 ```bash
-npm install -g ./soma-code-1.0.0.tgz
+npm install -g github:SiChuchen/soma-code
 ```
 
-如果你希望得到全局 `soma` 命令，不要使用 `npm install .`。这个命令只会把当前目录作为依赖安装到项目里，不会把 CLI 暴露成全局命令。
+npm 会把 GitHub 简写当成 git 依赖处理。因为这个仓库定义了 `build` 脚本，安装时可能进入 git dependency preparation 这条源码构建链路，它比 registry 包安装或打包产物安装更脆弱。
 
 更多安装说明见 [INSTALL.md](./INSTALL.md)。
 
 ### `npm ERR! spawn sh ENOENT` 排查
 
-这个错误表示 npm 在执行依赖生命周期脚本时无法启动 `sh`，不是 `soma` 运行时本身崩溃。
+这个错误通常出现在 npm 被迫进入 git 依赖的源码构建准备流程，而目标机器又无法启动 `sh` 去执行生命周期脚本或构建步骤时。它不是 `soma` 运行时本身崩溃。
 
 先检查：
 
@@ -355,7 +377,7 @@ npm config get script-shell
 npm config delete script-shell
 ```
 
-如果你用的是精简 Linux 镜像，还需要确认 `PATH` 中包含 `/bin` 和 `/usr/bin`。当前仓库已经去掉了 `soma` 本身以及必需依赖 `protobufjs` 的必经安装脚本；如果你还想进一步规避可选原生依赖的安装脚本，可以继续使用 `--omit=optional` 安装。
+如果你用的是精简 Linux 镜像，还需要确认 `PATH` 中包含 `/bin` 和 `/usr/bin`。优先安装打包好的 `.tgz` 产物，而不是 `github:` 源码简写；如果你还想进一步规避可选原生依赖的安装脚本，可以继续使用 `--omit=optional` 安装。
 
 ## 快速开始
 

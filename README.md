@@ -289,18 +289,34 @@ bun --version
 
 The `soma` installation command is the same on Windows and Linux after the dependencies above are ready.
 
-### Option 1: Install directly from GitHub with npm
+### Option 1: Install from the npm registry
 
-Recommended:
+Preferred public distribution path once `soma-code` is published:
 
 ```bash
-npm install -g github:SiChuchen/soma-code
+npm install -g soma-code
+```
+
+### Option 2: Install from a packaged `.tgz` release artifact
+
+Preferred fallback before npm publication or when you want a tarball-based install path.
+
+If you want the latest repository snapshot without GitHub git shorthand:
+
+```bash
+npm install -g https://github.com/SiChuchen/soma-code/archive/refs/heads/master.tar.gz
+```
+
+If you want a pinned packaged artifact:
+
+```bash
+npm install -g ./soma-code-1.0.3.tgz
 ```
 
 On minimal Linux images where you want to skip optional native image tooling during install:
 
 ```bash
-npm install -g --omit=optional github:SiChuchen/soma-code
+npm install -g --omit=optional ./soma-code-1.0.3.tgz
 ```
 
 After installation:
@@ -318,7 +334,9 @@ somacode --help
 soma-code --help
 ```
 
-### Option 2: Local installation
+### Option 3: Local source installation
+
+This path is intended for contributors and local debugging, not for end-user installs.
 
 If you already have the source code checked out locally, install from the local directory:
 
@@ -327,19 +345,23 @@ cd soma-code
 npm install -g .
 ```
 
-If you have a packaged tarball such as `soma-code-1.0.0.tgz`, you can install it directly:
+Do not use `npm install .` if you expect a global `soma` command. That installs the package as a dependency in the current project, but does not expose the CLI globally.
+
+### Not recommended
+
+Avoid:
 
 ```bash
-npm install -g ./soma-code-1.0.0.tgz
+npm install -g github:SiChuchen/soma-code
 ```
 
-Do not use `npm install .` if you expect a global `soma` command. That installs the package as a dependency in the current project, but does not expose the CLI globally.
+npm treats GitHub shorthand as a git dependency. Because this repository defines a `build` script, npm can enter a git dependency preparation flow during install, which is more fragile than installing a registry package or a packaged tarball artifact.
 
 For more installation details, see [INSTALL.md](./INSTALL.md).
 
 ### Troubleshooting `npm ERR! spawn sh ENOENT`
 
-This npm error means the target machine cannot launch `sh` for lifecycle scripts. It is not a `soma` runtime failure.
+This npm error often shows up when npm is forced into source-build preparation for a git dependency and the target machine cannot launch `sh` for lifecycle or build steps. It is not a `soma` runtime failure.
 
 Check:
 
@@ -355,7 +377,7 @@ If `script-shell` points to a missing path, reset it:
 npm config delete script-shell
 ```
 
-If you are on a minimal Linux image, also make sure `PATH` includes `/bin` and `/usr/bin`. The current repo avoids required install scripts for `soma` itself and `protobufjs`, and `--omit=optional` remains a safe fallback if you want to skip optional native addons during install.
+If you are on a minimal Linux image, also make sure `PATH` includes `/bin` and `/usr/bin`. Prefer installing a packaged tarball instead of `github:` source shorthand, and keep `--omit=optional` if you want to skip optional native addons during install.
 
 ## Quick Start
 

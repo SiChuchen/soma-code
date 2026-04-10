@@ -10,6 +10,16 @@ describe('distribution helpers', () => {
   test('detects GitHub install specs across supported formats', () => {
     expect(isGitHubInstallSpec('github:SiChuchen/soma-code')).toBe(true)
     expect(
+      isGitHubInstallSpec(
+        'https://github.com/SiChuchen/soma-code/archive/refs/heads/master.tar.gz',
+      ),
+    ).toBe(true)
+    expect(
+      isGitHubInstallSpec(
+        'https://codeload.github.com/SiChuchen/soma-code/tar.gz/refs/heads/master',
+      ),
+    ).toBe(true)
+    expect(
       extractGitHubRepositoryFromSpec(
         'git+https://github.com/SiChuchen/soma-code.git',
       ),
@@ -32,6 +42,14 @@ describe('distribution helpers', () => {
     expect(
       getPackageInstallTargetFromSpec('github:SiChuchen/soma-code', '1.2.3'),
     ).toBe('github:SiChuchen/soma-code')
+    expect(
+      getPackageInstallTargetFromSpec(
+        'https://github.com/SiChuchen/soma-code/archive/refs/heads/master.tar.gz',
+        '1.2.3',
+      ),
+    ).toBe(
+      'https://github.com/SiChuchen/soma-code/archive/refs/heads/master.tar.gz',
+    )
   })
 
   test('tracks both legacy and current package names for diagnostics', () => {

@@ -4,8 +4,9 @@ import { getAppConfigHomeDir } from './envUtils.js'
 
 export const DEFAULT_PACKAGE_NAME = 'soma-code'
 export const DEFAULT_GITHUB_REPOSITORY = 'SiChuchen/soma-code'
+export const DEFAULT_GITHUB_BRANCH = 'master'
 export const DEFAULT_PACKAGE_INSTALL_SPEC =
-  `github:${DEFAULT_GITHUB_REPOSITORY}`
+  `https://github.com/${DEFAULT_GITHUB_REPOSITORY}/archive/refs/heads/${DEFAULT_GITHUB_BRANCH}.tar.gz`
 
 function getMacroString(key: string): string | null {
   if (typeof MACRO === 'undefined') {
@@ -24,6 +25,10 @@ function getMacroString(key: string): string | null {
 function normalizeGitHubRepository(value: string): string | null {
   const normalized = value.replace(/\.git$/, '').replace(/^\/+|\/+$/g, '')
   return /^[^/]+\/[^/]+$/.test(normalized) ? normalized : null
+}
+
+function getGitHubDefaultBranch(): string {
+  return getMacroString('GITHUB_DEFAULT_BRANCH') ?? DEFAULT_GITHUB_BRANCH
 }
 
 export function getPackageName(): string {
@@ -49,6 +54,20 @@ export function extractGitHubRepositoryFromSpec(
 
   if (normalizedSpec.startsWith('github:')) {
     return normalizeGitHubRepository(normalizedSpec.slice('github:'.length))
+  }
+
+  const archiveMatch = normalizedSpec.match(
+    /^https:\/\/github\.com\/(.+?)\/archive\/refs\/(?:heads|tags)\/.+\.tar\.gz$/,
+  )
+  if (archiveMatch?.[1]) {
+    return normalizeGitHubRepository(archiveMatch[1])
+  }
+
+  const codeloadMatch = normalizedSpec.match(
+    /^https:\/\/codeload\.github\.com\/(.+?)\/tar\.gz\/.+$/,
+  )
+  if (codeloadMatch?.[1]) {
+    return normalizeGitHubRepository(codeloadMatch[1])
   }
 
   const httpsMatch = normalizedSpec.match(
@@ -97,7 +116,7 @@ export function getGitHubIssuesUrl(): string {
 }
 
 export function getGitHubPackageManifestUrl(): string {
-  return `https://raw.githubusercontent.com/${getGitHubRepository()}/refs/heads/main/package.json`
+  return `https://raw.githubusercontent.com/${getGitHubRepository()}/refs/heads/${getGitHubDefaultBranch()}/package.json`
 }
 
 export function getPackageInstallTargetFromSpec(

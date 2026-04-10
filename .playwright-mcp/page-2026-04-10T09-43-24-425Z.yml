@@ -1,0 +1,1135 @@
+- generic [ref=e2]:
+  - region
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2FSiChuchen%2Fsoma-code
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E&source=header-repo&source_repo=SiChuchen%2Fsoma-code
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "SiChuchen" [ref=e70] [cursor=pointer]:
+            - /url: /SiChuchen
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "soma-code" [ref=e73] [cursor=pointer]:
+              - /url: /SiChuchen/soma-code
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2FSiChuchen%2Fsoma-code
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 0" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2FSiChuchen%2Fsoma-code
+                - img [ref=e82]
+                - text: Fork
+                - generic "0" [ref=e84]
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2FSiChuchen%2Fsoma-code
+                - img [ref=e88]
+                - text: Star
+                - generic "1 user starred this repository" [ref=e90]: "1"
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /SiChuchen/soma-code
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues" [ref=e99] [cursor=pointer]:
+              - /url: /SiChuchen/soma-code/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+          - listitem [ref=e104]:
+            - link "Pull requests" [ref=e105] [cursor=pointer]:
+              - /url: /SiChuchen/soma-code/pulls
+              - img [ref=e106]
+              - generic [ref=e108]: Pull requests
+          - listitem [ref=e109]:
+            - link "Actions" [ref=e110] [cursor=pointer]:
+              - /url: /SiChuchen/soma-code/actions
+              - img [ref=e111]
+              - generic [ref=e113]: Actions
+          - listitem [ref=e114]:
+            - link "Projects" [ref=e115] [cursor=pointer]:
+              - /url: /SiChuchen/soma-code/projects
+              - img [ref=e116]
+              - generic [ref=e118]: Projects
+          - listitem [ref=e119]:
+            - link "Security and quality" [ref=e120] [cursor=pointer]:
+              - /url: /SiChuchen/soma-code/security
+              - img [ref=e121]
+              - generic [ref=e123]: Security and quality
+          - listitem [ref=e124]:
+            - link "Insights" [ref=e125] [cursor=pointer]:
+              - /url: /SiChuchen/soma-code/pulse
+              - img [ref=e126]
+              - generic [ref=e128]: Insights
+    - generic [ref=e141]:
+      - heading "SiChuchen/soma-code" [level=1] [ref=e143]
+      - generic [ref=e144]:
+        - generic [ref=e147]:
+          - generic [ref=e148]:
+            - generic [ref=e149]:
+              - button "master branch" [ref=e151] [cursor=pointer]:
+                - generic [ref=e152]:
+                  - generic [ref=e154]:
+                    - img [ref=e156]
+                    - generic [ref=e159]: master
+                  - generic:
+                    - img
+              - generic [ref=e160]:
+                - link "Branches" [ref=e161] [cursor=pointer]:
+                  - /url: /SiChuchen/soma-code/branches
+                  - generic [ref=e162]:
+                    - generic:
+                      - img
+                    - generic [ref=e163]: Branches
+                - link "Tags" [ref=e164] [cursor=pointer]:
+                  - /url: /SiChuchen/soma-code/tags
+                  - generic [ref=e165]:
+                    - generic:
+                      - img
+                    - generic [ref=e166]: Tags
+            - generic [ref=e167]:
+              - generic [ref=e171]:
+                - img [ref=e173]
+                - combobox "Go to file" [ref=e175]
+              - button "Code" [ref=e176] [cursor=pointer]:
+                - generic [ref=e177]:
+                  - generic:
+                    - img
+                  - generic [ref=e178]: Code
+                  - generic:
+                    - img
+          - generic [ref=e179]:
+            - generic [ref=e180]:
+              - heading "Folders and files" [level=2] [ref=e181]
+              - table "Folders and files" [ref=e182]:
+                - rowgroup:
+                  - row "Name Last commit message Last commit date":
+                    - columnheader "Name"
+                    - columnheader "Last commit message":
+                      - generic "Last commit message"
+                    - columnheader "Last commit date":
+                      - generic "Last commit date"
+                - rowgroup [ref=e183]:
+                  - row "Latest commit History 4 Commits" [ref=e184]:
+                    - cell "Latest commit History 4 Commits" [ref=e185]:
+                      - generic [ref=e186]:
+                        - heading "Latest commit" [level=2] [ref=e187]
+                        - generic [ref=e190]:
+                          - heading "History" [level=2] [ref=e191]
+                          - link "4 Commits" [ref=e192] [cursor=pointer]:
+                            - /url: /SiChuchen/soma-code/commits/master/
+                            - generic [ref=e193]:
+                              - generic:
+                                - img
+                              - generic [ref=e194]: 4 Commits
+                  - row "bin, (Directory)" [ref=e195]:
+                    - cell "bin, (Directory)" [ref=e196]:
+                      - generic [ref=e197]:
+                        - img [ref=e198]
+                        - link "bin, (Directory)" [ref=e203] [cursor=pointer]:
+                          - /url: /SiChuchen/soma-code/tree/master/bin
+                          - text: bin
+                    - cell [ref=e204]
+                    - cell [ref=e206]
+                  - row "scripts, (Directory)" [ref=e209]:
+                    - cell "scripts, (Directory)" [ref=e210]:
+                      - generic [ref=e211]:
+                        - img [ref=e212]
+                        - link "scripts, (Directory)" [ref=e217] [cursor=pointer]:
+                          - /url: /SiChuchen/soma-code/tree/master/scripts
+                          - text: scripts
+                    - cell [ref=e218]
+                    - cell [ref=e220]
+                  - row "src, (Directory)" [ref=e223]:
+                    - cell "src, (Directory)" [ref=e224]:
+                      - generic [ref=e225]:
+                        - img [ref=e226]
+                        - link "src, (Directory)" [ref=e231] [cursor=pointer]:
+                          - /url: /SiChuchen/soma-code/tree/master/src
+                          - text: src
+                    - cell [ref=e232]
+                    - cell [ref=e234]
+                  - row "types, (Directory)" [ref=e237]:
+                    - cell "types, (Directory)" [ref=e238]:
+                      - generic [ref=e239]:
+                        - img [ref=e240]
+                        - link "types, (Directory)" [ref=e245] [cursor=pointer]:
+                          - /url: /SiChuchen/soma-code/tree/master/types
+                          - text: types
+                    - cell [ref=e246]
+                    - cell [ref=e248]
+                  - row "vendor, (Directory)" [ref=e251]:
+                    - cell "vendor, (Directory)" [ref=e252]:
+                      - generic [ref=e253]:
+                        - img [ref=e254]
+                        - link "vendor, (Directory)" [ref=e259] [cursor=pointer]:
+                          - /url: /SiChuchen/soma-code/tree/master/vendor
+                          - text: vendor
+                    - cell [ref=e260]
+                    - cell [ref=e262]
+                  - row ".gitignore, (File)" [ref=e265]:
+                    - cell ".gitignore, (File)" [ref=e266]:
+                      - generic [ref=e267]:
+                        - img [ref=e268]
+                        - link ".gitignore, (File)" [ref=e273] [cursor=pointer]:
+                          - /url: /SiChuchen/soma-code/blob/master/.gitignore
+                          - text: .gitignore
+                    - cell [ref=e274]
+                    - cell [ref=e276]
+                  - row "INSTALL.md, (File)" [ref=e279]:
+                    - cell "INSTALL.md, (File)" [ref=e280]:
+                      - generic [ref=e281]:
+                        - img [ref=e282]
+                        - link "INSTALL.md, (File)" [ref=e287] [cursor=pointer]:
+                          - /url: /SiChuchen/soma-code/blob/master/INSTALL.md
+                          - text: INSTALL.md
+                    - cell [ref=e288]
+                    - cell [ref=e290]
+                  - row "LICENSE, (File)" [ref=e293]:
+                    - cell "LICENSE, (File)" [ref=e294]:
+                      - generic [ref=e295]:
+                        - img [ref=e296]
+                        - link "LICENSE, (File)" [ref=e301] [cursor=pointer]:
+                          - /url: /SiChuchen/soma-code/blob/master/LICENSE
+                          - text: LICENSE
+                    - cell [ref=e302]
+                    - cell [ref=e304]
+                  - row "README.md, (File)" [ref=e307]:
+                    - cell "README.md, (File)" [ref=e308]:
+                      - generic [ref=e309]:
+                        - img [ref=e310]
+                        - link "README.md, (File)" [ref=e315] [cursor=pointer]:
+                          - /url: /SiChuchen/soma-code/blob/master/README.md
+                          - text: README.md
+                    - cell [ref=e316]
+                    - cell [ref=e318]
+                  - row "README.zh-CN.md, (File)" [ref=e321]:
+                    - cell "README.zh-CN.md, (File)" [ref=e322]:
+                      - generic [ref=e323]:
+                        - img [ref=e324]
+                        - link "README.zh-CN.md, (File)" [ref=e329] [cursor=pointer]:
+                          - /url: /SiChuchen/soma-code/blob/master/README.zh-CN.md
+                          - text: README.zh-CN.md
+                    - cell [ref=e330]
+                    - cell [ref=e332]
+                  - row "package.json, (File)" [ref=e335]:
+                    - cell "package.json, (File)" [ref=e336]:
+                      - generic [ref=e337]:
+                        - img [ref=e338]
+                        - link "package.json, (File)" [ref=e343] [cursor=pointer]:
+                          - /url: /SiChuchen/soma-code/blob/master/package.json
+                          - text: package.json
+                    - cell [ref=e344]
+                    - cell [ref=e346]
+                  - row "tsconfig.build.json, (File)" [ref=e349]:
+                    - cell "tsconfig.build.json, (File)" [ref=e350]:
+                      - generic [ref=e351]:
+                        - img [ref=e352]
+                        - link "tsconfig.build.json, (File)" [ref=e357] [cursor=pointer]:
+                          - /url: /SiChuchen/soma-code/blob/master/tsconfig.build.json
+                          - text: tsconfig.build.json
+                    - cell [ref=e358]
+                    - cell [ref=e360]
+                  - row "tsconfig.check.json, (File)" [ref=e363]:
+                    - cell "tsconfig.check.json, (File)" [ref=e364]:
+                      - generic [ref=e365]:
+                        - img [ref=e366]
+                        - link "tsconfig.check.json, (File)" [ref=e371] [cursor=pointer]:
+                          - /url: /SiChuchen/soma-code/blob/master/tsconfig.check.json
+                          - text: tsconfig.check.json
+                    - cell [ref=e372]
+                    - cell [ref=e374]
+                  - row "tsconfig.json, (File)" [ref=e377]:
+                    - cell "tsconfig.json, (File)" [ref=e378]:
+                      - generic [ref=e379]:
+                        - img [ref=e380]
+                        - link "tsconfig.json, (File)" [ref=e385] [cursor=pointer]:
+                          - /url: /SiChuchen/soma-code/blob/master/tsconfig.json
+                          - text: tsconfig.json
+                    - cell [ref=e386]
+                    - cell [ref=e388]
+            - generic [ref=e392]:
+              - generic [ref=e393]:
+                - heading "Repository files navigation" [level=2] [ref=e394]
+                - navigation "Repository files" [ref=e395]:
+                  - list [ref=e396]:
+                    - listitem [ref=e397]:
+                      - link "README" [ref=e398] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e400]
+                        - generic [ref=e402]: README
+                    - listitem [ref=e403]:
+                      - link "MIT license" [ref=e404] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e406]
+                        - generic [ref=e408]: MIT license
+                - button "Outline" [ref=e409] [cursor=pointer]:
+                  - img [ref=e410]
+              - article [ref=e413]:
+                - generic [ref=e414]:
+                  - heading "Soma Code" [level=1] [ref=e415]
+                  - 'link "Permalink: Soma Code" [ref=e416] [cursor=pointer]':
+                    - /url: "#soma-code"
+                    - img [ref=e417]
+                - paragraph [ref=e419]:
+                  - link "中文文档" [ref=e420] [cursor=pointer]:
+                    - /url: /SiChuchen/soma-code/blob/master/README.zh-CN.md
+                - paragraph [ref=e421]: The soma code prototype was refactored from a top-tier open-source project.
+                - paragraph [ref=e422]: Soma Code is a terminal-first AI coding CLI designed for working directly inside local projects. It helps you understand repositories, edit code, configure model providers, and run day-to-day development workflows from the command line.
+                - paragraph [ref=e423]: "Public repository:"
+                - list [ref=e424]:
+                  - listitem [ref=e425]:
+                    - text: "GitHub:"
+                    - code [ref=e426]: https://github.com/SiChuchen/soma-code
+                - generic [ref=e427]:
+                  - heading "Project Positioning" [level=2] [ref=e428]
+                  - 'link "Permalink: Project Positioning" [ref=e429] [cursor=pointer]':
+                    - /url: "#project-positioning"
+                    - img [ref=e430]
+                - paragraph [ref=e432]: "Soma Code is not just a chat interface in a terminal. It is intended to be a practical coding agent CLI that can:"
+                - list [ref=e433]:
+                  - listitem [ref=e434]: understand the current working directory and project context
+                  - listitem [ref=e435]: configure models, providers, and authentication interactively
+                  - listitem [ref=e436]: read and write local files as part of development workflows
+                  - listitem [ref=e437]: support both user-level and project-level configuration
+                  - listitem [ref=e438]: work with multiple provider styles instead of being tied to a single vendor
+                - generic [ref=e439]:
+                  - heading "Core Capabilities" [level=2] [ref=e440]
+                  - 'link "Permalink: Core Capabilities" [ref=e441] [cursor=pointer]':
+                    - /url: "#core-capabilities"
+                    - img [ref=e442]
+                - list [ref=e444]:
+                  - listitem [ref=e445]: Interactive AI coding assistant in the terminal
+                  - listitem [ref=e446]:
+                    - text: Unified provider and API configuration through
+                    - code [ref=e447]: /config
+                  - listitem [ref=e448]:
+                    - text: Login-oriented flows through
+                    - code [ref=e449]: /login
+                  - listitem [ref=e450]:
+                    - text: Model inspection and switching through
+                    - code [ref=e451]: /model
+                  - listitem [ref=e452]: Support for OpenAI-compatible providers
+                  - listitem [ref=e453]:
+                    - text: User configuration stored under
+                    - code [ref=e454]: ~/.soma
+                  - listitem [ref=e455]:
+                    - text: Project configuration stored under
+                    - code [ref=e456]: .soma/
+                  - listitem [ref=e457]: Compatibility layers for legacy remote and migration workflows
+                - generic [ref=e458]:
+                  - heading "Install" [level=2] [ref=e459]
+                  - 'link "Permalink: Install" [ref=e460] [cursor=pointer]':
+                    - /url: "#install"
+                    - img [ref=e461]
+                - paragraph [ref=e463]:
+                  - text: If Bun is not available yet, install it first or let
+                  - code [ref=e464]: soma
+                  - text: resolve/download Bun on first run.
+                - paragraph [ref=e465]:
+                  - text: See
+                  - link "INSTALL.md" [ref=e466] [cursor=pointer]:
+                    - /url: /SiChuchen/soma-code/blob/master/INSTALL.md
+                  - text: for the supported installation flows.
+                - generic [ref=e467]:
+                  - heading "Feature Guide" [level=2] [ref=e468]
+                  - 'link "Permalink: Feature Guide" [ref=e469] [cursor=pointer]':
+                    - /url: "#feature-guide"
+                    - img [ref=e470]
+                - generic [ref=e472]:
+                  - heading "OpenAI-compatible access" [level=3] [ref=e473]
+                  - 'link "Permalink: OpenAI-compatible access" [ref=e474] [cursor=pointer]':
+                    - /url: "#openai-compatible-access"
+                    - img [ref=e475]
+                - paragraph [ref=e477]: Soma can connect to providers that expose OpenAI-style APIs.
+                - paragraph [ref=e478]: "How to use:"
+                - list [ref=e479]:
+                  - listitem [ref=e480]:
+                    - text: Open
+                    - code [ref=e481]: /config
+                  - listitem [ref=e482]:
+                    - text: Choose a provider or custom provider entry that uses
+                    - code [ref=e483]: OpenAI-compatible
+                    - text: routing
+                  - listitem [ref=e484]:
+                    - text: Set the provider
+                    - code [ref=e485]: Base URL
+                  - listitem [ref=e486]:
+                    - text: Set the provider
+                    - code [ref=e487]: API key
+                  - listitem [ref=e488]:
+                    - text: Set the upstream
+                    - code [ref=e489]: Provider model
+                  - listitem [ref=e490]:
+                    - text: Only change
+                    - code [ref=e491]: API key header
+                    - text: ","
+                    - code [ref=e492]: API auth scheme
+                    - text: ", or"
+                    - code [ref=e493]: Disable auth
+                    - text: if the upstream provider docs explicitly require it
+                - paragraph [ref=e494]: "Notes:"
+                - list [ref=e495]:
+                  - listitem [ref=e496]:
+                    - code [ref=e497]: /config
+                    - text: already includes an OpenAI-compatible configuration dialog and provider compatibility handling
+                  - listitem [ref=e498]: Supported OpenAI-compatible profiles include local/authless gateways and hosted services such as Azure OpenAI, Ollama, LM Studio, Moonshot/Kimi, Qianfan, Hunyuan, iFlytek, and ChatGPT-style routing
+                  - listitem [ref=e499]:
+                    - text: For most gateways, the base URL is the provider root, commonly ending in
+                    - code [ref=e500]: /v1
+                - generic [ref=e501]:
+                  - heading "Anthropic-compatible access" [level=3] [ref=e502]
+                  - 'link "Permalink: Anthropic-compatible access" [ref=e503] [cursor=pointer]':
+                    - /url: "#anthropic-compatible-access"
+                    - img [ref=e504]
+                - paragraph [ref=e506]: Soma also supports endpoints that speak Anthropic-compatible protocol semantics.
+                - paragraph [ref=e507]: "How to use:"
+                - list [ref=e508]:
+                  - listitem [ref=e509]:
+                    - text: Open
+                    - code [ref=e510]: /config
+                  - listitem [ref=e511]:
+                    - text: Add or select a connection that uses
+                    - code [ref=e512]: Anthropic-compatible
+                  - listitem [ref=e513]: Set the target base URL and model required by that provider
+                  - listitem [ref=e514]:
+                    - text: Use it like any other configured model route through
+                    - code [ref=e515]: /model
+                    - text: or the default model settings
+                - paragraph [ref=e516]: "Notes:"
+                - list [ref=e517]:
+                  - listitem [ref=e518]:
+                    - text: The inference registry exposes
+                    - code [ref=e519]: Anthropic-compatible
+                    - text: as a first-class connection type
+                  - listitem [ref=e520]: Anthropic-compatible and OpenAI-compatible routing are handled as separate compatibility modes
+                - generic [ref=e521]:
+                  - heading "OpenAI auth / ChatGPT-style access" [level=3] [ref=e522]
+                  - 'link "Permalink: OpenAI auth / ChatGPT-style access" [ref=e523] [cursor=pointer]':
+                    - /url: "#openai-auth--chatgpt-style-access"
+                    - img [ref=e524]
+                - paragraph [ref=e526]: In addition to raw API keys, soma includes a ChatGPT OAuth-based access path.
+                - paragraph [ref=e527]: "How to use:"
+                - list [ref=e528]:
+                  - listitem [ref=e529]:
+                    - text: Open
+                    - code [ref=e530]: /config
+                  - listitem [ref=e531]: Go to the relevant provider/connection entry
+                  - listitem [ref=e532]: Start the ChatGPT auth flow when offered
+                  - listitem [ref=e533]: After authorization completes, use the routed model normally
+                - paragraph [ref=e534]: "Notes:"
+                - list [ref=e535]:
+                  - listitem [ref=e536]:
+                    - code [ref=e537]: /config
+                    - text: integrates
+                    - code [ref=e538]: startChatGPTOAuth
+                    - text: ","
+                    - code [ref=e539]: getChatGPTOAuthData
+                    - text: ", and"
+                    - code [ref=e540]: revokeChatGPTAuth
+                  - listitem [ref=e541]: The inference client injects the required OAuth headers for ChatGPT-backed OpenAI-compatible requests
+                - generic [ref=e542]:
+                  - heading "Dream" [level=3] [ref=e543]
+                  - 'link "Permalink: Dream" [ref=e544] [cursor=pointer]':
+                    - /url: "#dream"
+                    - img [ref=e545]
+                - paragraph [ref=e547]:
+                  - code [ref=e548]: /dream
+                  - text: starts a background memory-consolidation run.
+                - paragraph [ref=e549]: "How to use:"
+                - list [ref=e550]:
+                  - listitem [ref=e551]:
+                    - text: Run
+                    - code [ref=e552]: /dream
+                  - listitem [ref=e553]: Soma starts dream in the background
+                  - listitem [ref=e554]:
+                    - text: Open
+                    - code [ref=e555]: /tasks
+                    - text: to watch progress
+                - paragraph [ref=e556]: "Notes:"
+                - list [ref=e557]:
+                  - listitem [ref=e558]: If there are no newer sessions since the last consolidation, dream will review the existing memory files directly
+                  - listitem [ref=e559]: Dream depends on auto-memory being enabled
+                - generic [ref=e560]:
+                  - heading "Public Mode" [level=3] [ref=e561]
+                  - 'link "Permalink: Public Mode" [ref=e562] [cursor=pointer]':
+                    - /url: "#public-mode"
+                    - img [ref=e563]
+                - paragraph [ref=e565]: Public Mode is the current public/private presentation control entrypoint.
+                - paragraph [ref=e566]: "How to use:"
+                - list [ref=e567]:
+                  - listitem [ref=e568]:
+                    - code [ref=e569]: /public-mode
+                  - listitem [ref=e570]:
+                    - code [ref=e571]: /public-mode status
+                  - listitem [ref=e572]:
+                    - code [ref=e573]: /public-mode on
+                  - listitem [ref=e574]:
+                    - code [ref=e575]: /public-mode off
+                  - listitem [ref=e576]:
+                    - code [ref=e577]: /public-mode auto
+                  - listitem [ref=e578]:
+                    - code [ref=e579]: /public-mode default on
+                  - listitem [ref=e580]:
+                    - code [ref=e581]: /public-mode default off
+                  - listitem [ref=e582]:
+                    - code [ref=e583]: /public-mode default auto
+                  - listitem [ref=e584]:
+                    - code [ref=e585]: /public-mode default clear
+                - paragraph [ref=e586]: "Notes:"
+                - list [ref=e587]:
+                  - listitem [ref=e588]:
+                    - code [ref=e589]: /undercover
+                    - text: is kept as a compatibility alias and loads the same implementation
+                  - listitem [ref=e590]:
+                    - text: The UI already renders this as
+                    - code [ref=e591]: public mode
+                  - listitem [ref=e592]: Older Anti-Distillation wording is no longer the main user-facing entrypoint; Public Mode is the current supported mechanism
+                - generic [ref=e593]:
+                  - heading "Coordinator Mode" [level=3] [ref=e594]
+                  - 'link "Permalink: Coordinator Mode" [ref=e595] [cursor=pointer]':
+                    - /url: "#coordinator-mode"
+                    - img [ref=e596]
+                - paragraph [ref=e598]: Coordinator Mode lets new sessions in the current project start in coordinator mode.
+                - paragraph [ref=e599]: "How to use:"
+                - list [ref=e600]:
+                  - listitem [ref=e601]:
+                    - code [ref=e602]: /coordinator
+                  - listitem [ref=e603]:
+                    - code [ref=e604]: /coordinator status
+                  - listitem [ref=e605]:
+                    - code [ref=e606]: /coordinator on
+                  - listitem [ref=e607]:
+                    - code [ref=e608]: /coordinator off
+                  - listitem [ref=e609]:
+                    - code [ref=e610]: /coordinator default on
+                  - listitem [ref=e611]:
+                    - code [ref=e612]: /coordinator default off
+                  - listitem [ref=e613]:
+                    - code [ref=e614]: /coordinator default clear
+                - paragraph [ref=e615]: "Notes:"
+                - list [ref=e616]:
+                  - listitem [ref=e617]: Project-scoped changes affect new sessions for the current repo
+                  - listitem [ref=e618]: User defaults affect future sessions globally
+                  - listitem [ref=e619]: The current session is not retroactively changed by stored defaults
+                - generic [ref=e620]:
+                  - heading "Local autoDream" [level=3] [ref=e621]
+                  - 'link "Permalink: Local autoDream" [ref=e622] [cursor=pointer]':
+                    - /url: "#local-autodream"
+                    - img [ref=e623]
+                - paragraph [ref=e625]: Soma includes local auto-dream support for automatic memory consolidation.
+                - paragraph [ref=e626]: "How to use:"
+                - list [ref=e627]:
+                  - listitem [ref=e628]: Open the memory UI / selector
+                  - listitem [ref=e629]:
+                    - text: Toggle
+                    - code [ref=e630]: "Auto-dream: on"
+                  - listitem [ref=e631]:
+                    - text: You can still run
+                    - code [ref=e632]: /dream
+                    - text: manually at any time
+                - paragraph [ref=e633]: "Notes:"
+                - list [ref=e634]:
+                  - listitem [ref=e635]: Auto-dream only makes sense when auto-memory is enabled
+                  - listitem [ref=e636]:
+                    - text: The memory selector already shows auto-dream status and suggests
+                    - code [ref=e637]: /dream
+                    - text: when it is enabled but idle
+                  - listitem [ref=e638]: Auto-dream is skipped in remote mode and when KAIROS mode is active
+                - generic [ref=e639]:
+                  - heading "KAIROS" [level=3] [ref=e640]
+                  - 'link "Permalink: KAIROS" [ref=e641] [cursor=pointer]':
+                    - /url: "#kairos"
+                    - img [ref=e642]
+                - paragraph [ref=e644]: KAIROS is a feature-gated assistant/proactive capability inside soma.
+                - paragraph [ref=e645]: "How to use:"
+                - list [ref=e646]:
+                  - listitem [ref=e647]:
+                    - text: Use a build or environment where the
+                    - code [ref=e648]: KAIROS
+                    - text: feature gate is enabled
+                  - listitem [ref=e649]: When enabled, soma can expose KAIROS-related assistant, proactive, and brief flows
+                - paragraph [ref=e650]: "Notes:"
+                - list [ref=e651]:
+                  - listitem [ref=e652]: KAIROS is integrated at startup and command registration time
+                  - listitem [ref=e653]:
+                    - text: Related gates such as
+                    - code [ref=e654]: KAIROS_BRIEF
+                    - text: and
+                    - code [ref=e655]: KAIROS_GITHUB_WEBHOOKS
+                    - text: also exist in the codebase
+                  - listitem [ref=e656]: Some KAIROS capabilities depend on entitlement or runtime gating rather than a single always-visible slash command
+                - generic [ref=e657]:
+                  - heading "BUDDY" [level=3] [ref=e658]
+                  - 'link "Permalink: BUDDY" [ref=e659] [cursor=pointer]':
+                    - /url: "#buddy"
+                    - img [ref=e660]
+                - paragraph [ref=e662]: BUDDY is a lightweight built-in companion system.
+                - paragraph [ref=e663]: "How to use:"
+                - list [ref=e664]:
+                  - listitem [ref=e665]:
+                    - code [ref=e666]: /buddy
+                  - listitem [ref=e667]:
+                    - code [ref=e668]: /buddy hatch
+                  - listitem [ref=e669]:
+                    - code [ref=e670]: /buddy pet
+                  - listitem [ref=e671]:
+                    - code [ref=e672]: /buddy status
+                  - listitem [ref=e673]:
+                    - code [ref=e674]: /buddy mute
+                  - listitem [ref=e675]:
+                    - code [ref=e676]: /buddy unmute
+                  - listitem [ref=e677]:
+                    - code [ref=e678]: /buddy help
+                - paragraph [ref=e679]: "Behavior:"
+                - list [ref=e680]:
+                  - listitem [ref=e681]:
+                    - text: If you do not have a buddy yet,
+                    - code [ref=e682]: /buddy
+                    - text: hatches one
+                  - listitem [ref=e683]:
+                    - text: If you already have one,
+                    - code [ref=e684]: /buddy
+                    - text: pets it
+                - generic [ref=e685]:
+                  - heading "WebBrowser" [level=3] [ref=e686]
+                  - 'link "Permalink: WebBrowser" [ref=e687] [cursor=pointer]':
+                    - /url: "#webbrowser"
+                    - img [ref=e688]
+                - paragraph [ref=e690]: Soma includes a built-in WebBrowser tool path for browser-page inspection and interaction.
+                - paragraph [ref=e691]: "How to use:"
+                - list [ref=e692]:
+                  - listitem [ref=e693]:
+                    - text: Enable the browser tool feature gate, or set
+                    - code [ref=e694]: CLAUDE_CODE_ENABLE_WEB_BROWSER_TOOL
+                  - listitem [ref=e695]:
+                    - text: Then let the agent use the
+                    - code [ref=e696]: WebBrowser
+                    - text: tool when browser interaction is needed
+                - paragraph [ref=e697]: "Supported actions in the current schema:"
+                - list [ref=e698]:
+                  - listitem [ref=e699]:
+                    - code [ref=e700]: navigate
+                  - listitem [ref=e701]:
+                    - code [ref=e702]: snapshot
+                  - listitem [ref=e703]:
+                    - code [ref=e704]: click
+                  - listitem [ref=e705]:
+                    - code [ref=e706]: type
+                  - listitem [ref=e707]:
+                    - code [ref=e708]: wait
+                  - listitem [ref=e709]:
+                    - code [ref=e710]: evaluate
+                  - listitem [ref=e711]:
+                    - code [ref=e712]: screenshot
+                  - listitem [ref=e713]:
+                    - code [ref=e714]: console
+                  - listitem [ref=e715]:
+                    - code [ref=e716]: network
+                  - listitem [ref=e717]:
+                    - code [ref=e718]: close
+                - paragraph [ref=e719]: "Notes:"
+                - list [ref=e720]:
+                  - listitem [ref=e721]: The tool is intended for local dev servers, screenshots, console inspection, network inspection, and lightweight page interaction
+                  - listitem [ref=e722]: In this snapshot, the browser tool shell and schema are present, but the code also includes an unavailable-message path if no browser backend is wired in yet
+                - generic [ref=e723]:
+                  - heading "Typical Use Cases" [level=2] [ref=e724]
+                  - 'link "Permalink: Typical Use Cases" [ref=e725] [cursor=pointer]':
+                    - /url: "#typical-use-cases"
+                    - img [ref=e726]
+                - list [ref=e728]:
+                  - listitem [ref=e729]: understanding an unfamiliar codebase
+                  - listitem [ref=e730]: editing or refactoring an existing project
+                  - listitem [ref=e731]: debugging API/provider/model configuration
+                  - listitem [ref=e732]: keeping project-scoped settings alongside a repository
+                  - listitem [ref=e733]: driving development tasks directly from the terminal
+                - generic [ref=e734]:
+                  - heading "Requirements" [level=2] [ref=e735]
+                  - 'link "Permalink: Requirements" [ref=e736] [cursor=pointer]':
+                    - /url: "#requirements"
+                    - img [ref=e737]
+                - list [ref=e739]:
+                  - listitem [ref=e740]:
+                    - text: Node.js
+                    - code [ref=e741]: ">= 18"
+                  - listitem [ref=e742]:
+                    - text: Bun
+                    - code [ref=e743]: ">= 1.2.23"
+                  - listitem [ref=e744]:
+                    - text: npm
+                    - code [ref=e745]: ">= 9"
+                - paragraph [ref=e746]:
+                  - code [ref=e747]: soma
+                  - text: starts through
+                  - link "bin/soma.js" [ref=e748] [cursor=pointer]:
+                    - /url: /SiChuchen/soma-code/blob/master/bin/soma.js
+                  - text: ", which launches the CLI with Bun. The launcher first checks"
+                  - code [ref=e749]: SOMA_BUN_BIN
+                  - text: /
+                  - code [ref=e750]: CLAUDE_CODE_BUN_BIN
+                  - text: ", then"
+                  - code [ref=e751]: PATH
+                  - text: ", then bundled fallback locations."
+                - generic [ref=e752]:
+                  - heading "Install Dependencies" [level=2] [ref=e753]
+                  - 'link "Permalink: Install Dependencies" [ref=e754] [cursor=pointer]':
+                    - /url: "#install-dependencies"
+                    - img [ref=e755]
+                - generic [ref=e757]:
+                  - heading "Windows" [level=3] [ref=e758]
+                  - 'link "Permalink: Windows" [ref=e759] [cursor=pointer]':
+                    - /url: "#windows"
+                    - img [ref=e760]
+                - paragraph [ref=e762]: "Install Node.js LTS and Bun:"
+                - generic [ref=e763]:
+                  - generic [ref=e764]: winget install --id OpenJS.NodeJS.LTS -e --source winget winget install --id Oven-sh.Bun -e --source winget
+                  - button "Copy" [ref=e766] [cursor=pointer]:
+                    - img [ref=e767]
+                - paragraph [ref=e770]: "Open a new terminal, then verify:"
+                - generic [ref=e771]:
+                  - generic [ref=e772]: node -v npm -v bun --version
+                  - button "Copy" [ref=e774] [cursor=pointer]:
+                    - img [ref=e775]
+                - paragraph [ref=e778]:
+                  - text: If Bun is installed but still not available in
+                  - code [ref=e779]: PATH
+                  - text: ", set"
+                  - code [ref=e780]: SOMA_BUN_BIN
+                  - text: to either the full
+                  - code [ref=e781]: bun.exe
+                  - text: path or the directory that contains it before running
+                  - code [ref=e782]: soma
+                  - text: .
+                - generic [ref=e783]:
+                  - heading "Linux" [level=3] [ref=e784]
+                  - 'link "Permalink: Linux" [ref=e785] [cursor=pointer]':
+                    - /url: "#linux"
+                    - img [ref=e786]
+                - paragraph [ref=e788]:
+                  - text: Install
+                  - code [ref=e789]: Node.js >= 18
+                  - text: and
+                  - code [ref=e790]: npm >= 9
+                  - text: with your distribution's package manager, then install
+                  - code [ref=e791]: unzip
+                  - text: "because Bun's official installer requires it:"
+                - generic [ref=e792]:
+                  - generic [ref=e793]: sudo apt install -y unzip curl -fsSL https://bun.com/install | bash
+                  - button "Copy" [ref=e795] [cursor=pointer]:
+                    - img [ref=e796]
+                - paragraph [ref=e799]:
+                  - text: If your shell does not load Bun automatically, add it to
+                  - code [ref=e800]: PATH
+                  - text: ":"
+                - generic [ref=e801]:
+                  - generic [ref=e802]:
+                    - text: export BUN_INSTALL=
+                    - generic [ref=e803]: "\"$HOME/.bun\""
+                    - text: export PATH=
+                    - generic [ref=e804]: "\"$BUN_INSTALL/bin:$PATH\""
+                  - button "Copy" [ref=e806] [cursor=pointer]:
+                    - img [ref=e807]
+                - paragraph [ref=e810]: "Then verify:"
+                - generic [ref=e811]:
+                  - generic [ref=e812]: node -v npm -v bun --version
+                  - button "Copy" [ref=e814] [cursor=pointer]:
+                    - img [ref=e815]
+                - generic [ref=e818]:
+                  - heading "Install Soma" [level=2] [ref=e819]
+                  - 'link "Permalink: Install Soma" [ref=e820] [cursor=pointer]':
+                    - /url: "#install-soma"
+                    - img [ref=e821]
+                - paragraph [ref=e823]:
+                  - text: The
+                  - code [ref=e824]: soma
+                  - text: installation command is the same on Windows and Linux after the dependencies above are ready.
+                - generic [ref=e825]:
+                  - 'heading "Option 1: Install directly from GitHub with npm" [level=3] [ref=e826]'
+                  - 'link "Permalink: Option 1: Install directly from GitHub with npm" [ref=e827] [cursor=pointer]':
+                    - /url: "#option-1-install-directly-from-github-with-npm"
+                    - img [ref=e828]
+                - paragraph [ref=e830]: "Recommended:"
+                - generic [ref=e831]:
+                  - generic [ref=e832]: npm install -g github:SiChuchen/soma-code
+                  - button "Copy" [ref=e834] [cursor=pointer]:
+                    - img [ref=e835]
+                - paragraph [ref=e838]: "After installation:"
+                - generic [ref=e839]:
+                  - generic [ref=e840]: soma --help soma --version soma
+                  - button "Copy" [ref=e842] [cursor=pointer]:
+                    - img [ref=e843]
+                - paragraph [ref=e846]: "Additional command aliases:"
+                - generic [ref=e847]:
+                  - generic [ref=e848]: somacode --help soma-code --help
+                  - button "Copy" [ref=e850] [cursor=pointer]:
+                    - img [ref=e851]
+                - generic [ref=e854]:
+                  - 'heading "Option 2: Local installation" [level=3] [ref=e855]'
+                  - 'link "Permalink: Option 2: Local installation" [ref=e856] [cursor=pointer]':
+                    - /url: "#option-2-local-installation"
+                    - img [ref=e857]
+                - paragraph [ref=e859]: "If you already have the source code checked out locally, install from the local directory:"
+                - generic [ref=e860]:
+                  - generic [ref=e861]: cd soma-code npm install -g .
+                  - button "Copy" [ref=e863] [cursor=pointer]:
+                    - img [ref=e864]
+                - paragraph [ref=e867]:
+                  - text: If you have a packaged tarball such as
+                  - code [ref=e868]: soma-code-1.0.0.tgz
+                  - text: ", you can install it directly:"
+                - generic [ref=e869]:
+                  - generic [ref=e870]: npm install -g ./soma-code-1.0.0.tgz
+                  - button "Copy" [ref=e872] [cursor=pointer]:
+                    - img [ref=e873]
+                - paragraph [ref=e876]:
+                  - text: Do not use
+                  - code [ref=e877]: npm install .
+                  - text: if you expect a global
+                  - code [ref=e878]: soma
+                  - text: command. That installs the package as a dependency in the current project, but does not expose the CLI globally.
+                - paragraph [ref=e879]:
+                  - text: For more installation details, see
+                  - link "INSTALL.md" [ref=e880] [cursor=pointer]:
+                    - /url: /SiChuchen/soma-code/blob/master/INSTALL.md
+                  - text: .
+                - generic [ref=e881]:
+                  - heading "Quick Start" [level=2] [ref=e882]
+                  - 'link "Permalink: Quick Start" [ref=e883] [cursor=pointer]':
+                    - /url: "#quick-start"
+                    - img [ref=e884]
+                - paragraph [ref=e886]: "Recommended first-run flow:"
+                - list [ref=e887]:
+                  - listitem [ref=e888]:
+                    - text: Start
+                    - code [ref=e889]: soma
+                  - listitem [ref=e890]:
+                    - text: Use
+                    - code [ref=e891]: /login
+                    - text: for capabilities that require authentication
+                  - listitem [ref=e892]:
+                    - text: Use
+                    - code [ref=e893]: /config
+                    - text: to configure API provider, API key, base URL, and default model
+                  - listitem [ref=e894]:
+                    - text: Use
+                    - code [ref=e895]: /model
+                    - text: to inspect the currently configured models
+                  - listitem [ref=e896]: Start working directly inside your project directory
+                - paragraph [ref=e897]:
+                  - text: For OpenAI-compatible providers, you can configure the provider from
+                  - code [ref=e898]: /config
+                  - text: or use the corresponding runtime environment variables supported by your deployment.
+                - generic [ref=e899]:
+                  - heading "Common Commands" [level=2] [ref=e900]
+                  - 'link "Permalink: Common Commands" [ref=e901] [cursor=pointer]':
+                    - /url: "#common-commands"
+                    - img [ref=e902]
+                - list [ref=e904]:
+                  - listitem [ref=e905]:
+                    - code [ref=e906]: soma
+                    - text: Start an interactive session
+                  - listitem [ref=e907]:
+                    - code [ref=e908]: soma --help
+                    - text: Show CLI help
+                  - listitem [ref=e909]:
+                    - code [ref=e910]: soma --version
+                    - text: Show the current version
+                  - listitem [ref=e911]:
+                    - code [ref=e912]: soma update
+                    - text: Check for and install updates
+                  - listitem [ref=e913]:
+                    - code [ref=e914]: /login
+                    - text: Handle login-oriented capabilities
+                  - listitem [ref=e915]:
+                    - code [ref=e916]: /config
+                    - text: Manage API and runtime configuration
+                  - listitem [ref=e917]:
+                    - code [ref=e918]: /model
+                    - text: Manage currently available models
+                - generic [ref=e919]:
+                  - heading "Configuration Model" [level=2] [ref=e920]
+                  - 'link "Permalink: Configuration Model" [ref=e921] [cursor=pointer]':
+                    - /url: "#configuration-model"
+                    - img [ref=e922]
+                - paragraph [ref=e924]: "Soma Code uses a layered configuration system:"
+                - list [ref=e925]:
+                  - listitem [ref=e926]:
+                    - text: "user-level config:"
+                    - code [ref=e927]: ~/.soma
+                  - listitem [ref=e928]:
+                    - text: "project-level config:"
+                    - code [ref=e929]: .soma/
+                - paragraph [ref=e930]: "This makes it easier to:"
+                - list [ref=e931]:
+                  - listitem [ref=e932]: reuse personal defaults across projects
+                  - listitem [ref=e933]: keep repository-specific settings separate
+                  - listitem [ref=e934]: preserve team conventions inside the project itself
+                - paragraph [ref=e935]:
+                  - text: The project still retains parts of the migration and compatibility behavior for older paths and entrypoints, but the default namespace is now
+                  - code [ref=e936]: soma
+                  - text: .
+                - generic [ref=e937]:
+                  - heading "Repository Structure" [level=2] [ref=e938]
+                  - 'link "Permalink: Repository Structure" [ref=e939] [cursor=pointer]':
+                    - /url: "#repository-structure"
+                    - img [ref=e940]
+                - paragraph [ref=e942]: "Main directories:"
+                - list [ref=e943]:
+                  - listitem [ref=e944]:
+                    - code [ref=e945]: src/
+                    - text: Core TypeScript source code
+                  - listitem [ref=e946]:
+                    - code [ref=e947]: bin/
+                    - text: CLI launcher entrypoints
+                  - listitem [ref=e948]:
+                    - code [ref=e949]: scripts/
+                    - text: Development and source-runner scripts
+                  - listitem [ref=e950]:
+                    - code [ref=e951]: vendor/
+                    - text: Vendored dependencies and wrappers
+                  - listitem [ref=e952]:
+                    - code [ref=e953]: types/
+                    - text: Global and helper type definitions
+                - paragraph [ref=e954]: "If you are contributing, the most important areas are usually:"
+                - list [ref=e955]:
+                  - listitem [ref=e956]:
+                    - code [ref=e957]: src/entrypoints/
+                    - text: CLI and runtime entrypoints
+                  - listitem [ref=e958]:
+                    - code [ref=e959]: src/commands/
+                    - text: Commands and interactive entry flows
+                  - listitem [ref=e960]:
+                    - code [ref=e961]: src/components/
+                    - text: Ink UI components
+                  - listitem [ref=e962]:
+                    - code [ref=e963]: src/services/
+                    - text: API, MCP, analytics, and sync/service logic
+                  - listitem [ref=e964]:
+                    - code [ref=e965]: src/tools/
+                    - text: Model-facing tools
+                  - listitem [ref=e966]:
+                    - code [ref=e967]: src/utils/
+                    - text: Shared runtime, configuration, and utility logic
+                - generic [ref=e968]:
+                  - heading "Development" [level=2] [ref=e969]
+                  - 'link "Permalink: Development" [ref=e970] [cursor=pointer]':
+                    - /url: "#development"
+                    - img [ref=e971]
+                - paragraph [ref=e973]: "Install dependencies:"
+                - generic [ref=e974]:
+                  - generic [ref=e975]: npm install
+                  - button "Copy" [ref=e977] [cursor=pointer]:
+                    - img [ref=e978]
+                - paragraph [ref=e981]: "Common commands:"
+                - generic [ref=e982]:
+                  - generic [ref=e983]: bun run typecheck bun run build bun test
+                  - button "Copy" [ref=e985] [cursor=pointer]:
+                    - img [ref=e986]
+                - paragraph [ref=e989]: "The source entrypoint is still available for development and debugging:"
+                - generic [ref=e990]:
+                  - generic [ref=e991]: bun scripts/run-source-cli.mjs --help
+                  - button "Copy" [ref=e993] [cursor=pointer]:
+                    - img [ref=e994]
+                - generic [ref=e997]:
+                  - heading "Compatibility Notes" [level=2] [ref=e998]
+                  - 'link "Permalink: Compatibility Notes" [ref=e999] [cursor=pointer]':
+                    - /url: "#compatibility-notes"
+                    - img [ref=e1000]
+                - list [ref=e1002]:
+                  - listitem [ref=e1003]:
+                    - text: The primary command name is
+                    - code [ref=e1004]: soma
+                  - listitem [ref=e1005]:
+                    - code [ref=e1006]: somacode
+                    - text: and
+                    - code [ref=e1007]: soma-code
+                    - text: can be exposed as additional command aliases in user-facing documentation and packaging
+                  - listitem [ref=e1008]:
+                    - text: Local and project configuration defaults have moved to the
+                    - code [ref=e1009]: soma
+                    - text: namespace
+                  - listitem [ref=e1010]: Some remote-related implementations remain for compatibility with legacy workflows
+                - generic [ref=e1011]:
+                  - heading "License" [level=2] [ref=e1012]
+                  - 'link "Permalink: License" [ref=e1013] [cursor=pointer]':
+                    - /url: "#license"
+                    - img [ref=e1014]
+                - paragraph [ref=e1016]:
+                  - text: This project is licensed under the
+                  - link "MIT License" [ref=e1017] [cursor=pointer]:
+                    - /url: /SiChuchen/soma-code/blob/master/LICENSE
+                  - text: .
+                - paragraph [ref=e1018]: You are free to use, modify, distribute, and use this project commercially, as long as the original copyright notice and license text are retained.
+        - generic [ref=e1022]:
+          - generic [ref=e1025]:
+            - heading "About" [level=2] [ref=e1026]
+            - generic [ref=e1027]: No description, website, or topics provided.
+            - heading "Resources" [level=3] [ref=e1028]
+            - link "Readme" [ref=e1030] [cursor=pointer]:
+              - /url: "#readme-ov-file"
+              - img [ref=e1031]
+              - text: Readme
+            - heading "License" [level=3] [ref=e1033]
+            - link "MIT license" [ref=e1035] [cursor=pointer]:
+              - /url: "#MIT-1-ov-file"
+              - img [ref=e1036]
+              - text: MIT license
+            - link "Activity" [ref=e1039] [cursor=pointer]:
+              - /url: /SiChuchen/soma-code/activity
+              - img [ref=e1040]
+              - text: Activity
+            - heading "Stars" [level=3] [ref=e1042]
+            - link "1 star" [ref=e1044] [cursor=pointer]:
+              - /url: /SiChuchen/soma-code/stargazers
+              - img [ref=e1045]
+              - strong [ref=e1047]: "1"
+              - text: star
+            - heading "Watchers" [level=3] [ref=e1048]
+            - link "0 watching" [ref=e1050] [cursor=pointer]:
+              - /url: /SiChuchen/soma-code/watchers
+              - img [ref=e1051]
+              - strong [ref=e1053]: "0"
+              - text: watching
+            - heading "Forks" [level=3] [ref=e1054]
+            - link "0 forks" [ref=e1056] [cursor=pointer]:
+              - /url: /SiChuchen/soma-code/forks
+              - img [ref=e1057]
+              - strong [ref=e1059]: "0"
+              - text: forks
+            - link "Report repository" [ref=e1061] [cursor=pointer]:
+              - /url: /contact/report-content?content_url=https%3A%2F%2Fgithub.com%2FSiChuchen%2Fsoma-code&report=SiChuchen+%28user%29
+          - generic [ref=e1063]:
+            - heading "Releases" [level=2] [ref=e1064]:
+              - link "Releases" [ref=e1065] [cursor=pointer]:
+                - /url: /SiChuchen/soma-code/releases
+            - generic [ref=e1066]: No releases published
+          - generic [ref=e1068]:
+            - heading "Packages" [level=2] [ref=e1069]:
+              - link "Packages" [ref=e1070] [cursor=pointer]:
+                - /url: /users/SiChuchen/packages?repo_name=soma-code
+            - generic [ref=e1071]: No packages published
+          - generic [ref=e1073]:
+            - heading "Contributors 2" [level=2] [ref=e1074]:
+              - link "Contributors 2" [ref=e1075] [cursor=pointer]:
+                - /url: /SiChuchen/soma-code/graphs/contributors
+                - text: Contributors
+                - generic "2" [ref=e1076]
+            - list [ref=e1077]:
+              - listitem [ref=e1078]:
+                - link "@claude" [ref=e1079] [cursor=pointer]:
+                  - /url: https://github.com/claude
+                  - img "@claude" [ref=e1080]
+                - link "claude Claude" [ref=e1082] [cursor=pointer]:
+                  - /url: https://github.com/claude
+                  - strong [ref=e1083]: claude
+                  - text: Claude
+              - listitem [ref=e1084]:
+                - link "@SiChuchen" [ref=e1085] [cursor=pointer]:
+                  - /url: https://github.com/SiChuchen
+                  - img "@SiChuchen" [ref=e1086]
+                - link "SiChuchen ZiLong Wang" [ref=e1088] [cursor=pointer]:
+                  - /url: https://github.com/SiChuchen
+                  - strong [ref=e1089]: SiChuchen
+                  - text: ZiLong Wang
+          - generic [ref=e1091]:
+            - heading "Languages" [level=2] [ref=e1092]
+            - list [ref=e1097]:
+              - listitem [ref=e1098]:
+                - link "TypeScript 99.9%" [ref=e1099] [cursor=pointer]:
+                  - /url: /SiChuchen/soma-code/search?l=typescript
+                  - img [ref=e1100]
+                  - generic [ref=e1102]: TypeScript
+                  - generic [ref=e1103]: 99.9%
+              - listitem [ref=e1104]:
+                - generic [ref=e1105]:
+                  - img [ref=e1106]
+                  - generic [ref=e1108]: Other
+                  - generic [ref=e1109]: 0.1%
+  - contentinfo [ref=e1111]:
+    - heading "Footer" [level=2] [ref=e1112]
+    - generic [ref=e1113]:
+      - generic [ref=e1114]:
+        - link "GitHub Homepage" [ref=e1115] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e1116]
+        - generic [ref=e1118]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e1119]:
+        - heading "Footer navigation" [level=3] [ref=e1120]
+        - list "Footer navigation" [ref=e1121]:
+          - listitem [ref=e1122]:
+            - link "Terms" [ref=e1123] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e1124]:
+            - link "Privacy" [ref=e1125] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e1126]:
+            - link "Security" [ref=e1127] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e1128]:
+            - link "Status" [ref=e1129] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e1130]:
+            - link "Community" [ref=e1131] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e1132]:
+            - link "Docs" [ref=e1133] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e1134]:
+            - link "Contact" [ref=e1135] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e1136]:
+            - button "Manage cookies" [ref=e1138] [cursor=pointer]
+          - listitem [ref=e1139]:
+            - button "Do not share my personal information" [ref=e1141] [cursor=pointer]

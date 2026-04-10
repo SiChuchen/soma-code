@@ -8,6 +8,10 @@ import { getAppConfigHomeDir } from './envUtils.js'
 import { toError } from './errors.js'
 import { logError } from './log.js'
 import { isEssentialTrafficOnly } from './privacyLevel.js'
+import {
+  DEFAULT_GITHUB_BRANCH,
+  DEFAULT_GITHUB_REPOSITORY,
+} from './distribution.js'
 import { gt } from './semver.js'
 
 const MAX_RELEASE_NOTES_SHOWN = 5
@@ -26,9 +30,9 @@ const MAX_RELEASE_NOTES_SHOWN = 5
  * 3. Next time the user starts Claude, the cached changelog is available immediately
  */
 export const CHANGELOG_URL =
-  'https://github.com/SiChuchen/soma-code/blob/main/CHANGELOG.md'
+  `https://github.com/${DEFAULT_GITHUB_REPOSITORY}/blob/${DEFAULT_GITHUB_BRANCH}/CHANGELOG.md`
 const RAW_CHANGELOG_URL =
-  'https://raw.githubusercontent.com/SiChuchen/soma-code/refs/heads/main/CHANGELOG.md'
+  `https://raw.githubusercontent.com/${DEFAULT_GITHUB_REPOSITORY}/refs/heads/${DEFAULT_GITHUB_BRANCH}/CHANGELOG.md`
 
 /**
  * Get the path for the cached changelog file.

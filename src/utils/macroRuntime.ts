@@ -10,6 +10,7 @@ type RuntimeMacroValues = {
   ISSUES_EXPLAINER: string
   VERSION_CHANGELOG: string
   GITHUB_REPOSITORY: string
+  GITHUB_DEFAULT_BRANCH: string
   GITHUB_REPOSITORY_URL: string
   GITHUB_ISSUES_URL: string
 }
@@ -18,13 +19,15 @@ const DEFAULT_MACRO_VALUES: RuntimeMacroValues = {
   VERSION: '1.0.0',
   PACKAGE_NAME: 'soma-code',
   BUILD_TIME: '',
-  PACKAGE_URL: 'github:SiChuchen/soma-code',
+  PACKAGE_URL:
+    'https://github.com/SiChuchen/soma-code/archive/refs/heads/master.tar.gz',
   NATIVE_PACKAGE_URL: null,
   FEEDBACK_CHANNEL: 'GitHub Issues: https://github.com/SiChuchen/soma-code/issues',
   ISSUES_EXPLAINER:
     'open an issue at https://github.com/SiChuchen/soma-code/issues',
   VERSION_CHANGELOG: '',
   GITHUB_REPOSITORY: 'SiChuchen/soma-code',
+  GITHUB_DEFAULT_BRANCH: 'master',
   GITHUB_REPOSITORY_URL: 'https://github.com/SiChuchen/soma-code',
   GITHUB_ISSUES_URL: 'https://github.com/SiChuchen/soma-code/issues',
 }

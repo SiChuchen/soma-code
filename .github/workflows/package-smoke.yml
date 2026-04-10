@@ -1,0 +1,41 @@
+name: package-smoke
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  tarball-install:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.23
+
+      - name: Pack npm tarball
+        run: npm pack
+
+      - name: Install packed tarball into isolated prefix
+        env:
+          NPM_CONFIG_PREFIX: ${{ runner.temp }}/npm-prefix
+        run: |
+          mkdir -p "$NPM_CONFIG_PREFIX"
+          echo "$NPM_CONFIG_PREFIX/bin" >> "$GITHUB_PATH"
+          npm install -g --omit=optional ./soma-code-*.tgz
+
+      - name: Verify CLI
+        run: |
+          command -v soma
+          soma --version
