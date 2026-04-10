@@ -10,6 +10,8 @@ This document covers the end-user installation flow for Soma Code.
 
 `soma` launches through [bin/soma.js](./bin/soma.js), which starts the CLI with Bun. Bun must be available in `PATH`, or `SOMA_BUN_BIN` must point to the Bun executable.
 
+During `npm install`, Soma no longer downloads Bun in `postinstall`. If Bun is not already available, `soma` can still resolve a local install or auto-download Bun on first run.
+
 If `bun` is not available in `PATH`, you can set:
 
 ```bash

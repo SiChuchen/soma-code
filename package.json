@@ -1,6 +1,6 @@
 {
   "name": "soma-code",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "type": "module",
   "description": "Soma Code CLI",
@@ -24,7 +24,7 @@
     "soma-code": "./bin/soma-code.js"
   },
   "scripts": {
-    "postinstall": "node -e \"if (process.cwd) { try { process.cwd(); process.exit(0); } catch { process.exit(1); } } process.exit(1)\" && node scripts/setup-bun.js || node -e \"console.warn('[soma:postinstall] Skipping bun setup because npm invoked postinstall with an invalid working directory. Install Bun manually or let soma resolve/download Bun at first run.')\"",
+    "postinstall": "node -e \"console.warn('[soma:postinstall] Skipping bundled Bun download during npm install. soma will resolve Bun from PATH, SOMA_BUN_BIN, local installs, or auto-download it on first run if needed.')\"",
     "typecheck": "tsc -p tsconfig.check.json",
     "build": "tsc -p tsconfig.build.json",
     "scan:missing": "node scripts/scan-missing-internal.mjs",

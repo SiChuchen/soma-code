@@ -31,6 +31,12 @@ Soma Code is not just a chat interface in a terminal. It is intended to be a pra
 - Project configuration stored under `.soma/`
 - Compatibility layers for legacy remote and migration workflows
 
+## Install
+
+If Bun is not available yet, install it first or let `soma` resolve/download Bun on first run.
+
+See [INSTALL.md](./INSTALL.md) for the supported installation flows.
+
 ## Feature Guide
 
 ### OpenAI-compatible access
