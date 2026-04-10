@@ -76,6 +76,50 @@ describe('resolveInferenceClientDescriptor', () => {
         model: 'gpt-5-mini',
         profile: 'azure',
       })
+      expect(descriptor.anthropicCompatible).toBeUndefined()
+    })
+  })
+
+  test('resolves direct anthropic-compatible runtime config from inference settings', () => {
+    runWithTempConfigDir(() => {
+      setEndpointApiKeyCredential('glm', 'ak-glm')
+
+      const descriptor = resolveInferenceClientDescriptor({
+        settings: {
+          inference: {
+            version: 1,
+            endpoints: [
+              {
+                id: 'glm',
+                name: 'Zhipu GLM',
+                transport: 'direct',
+                protocol: 'anthropic',
+                authMode: 'api_key',
+                baseUrl: 'https://open.bigmodel.cn/api/anthropic',
+              },
+            ],
+            models: [
+              {
+                id: 'anthropic::glm-5.1',
+                label: 'GLM 5.1',
+                endpointId: 'glm',
+                remoteModel: 'glm-5.1',
+              },
+            ],
+            defaults: {
+              modelId: 'anthropic::glm-5.1',
+            },
+          },
+        },
+      })
+
+      expect(descriptor.provider).toBe('anthropicCompatible')
+      expect(descriptor.openAICompat).toBeUndefined()
+      expect(descriptor.anthropicCompatible).toEqual({
+        apiKey: 'ak-glm',
+        baseUrl: 'https://open.bigmodel.cn/api/anthropic',
+        model: 'glm-5.1',
+      })
     })
   })
 

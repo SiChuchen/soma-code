@@ -4,9 +4,19 @@ import { resolveInferenceConfig } from './resolve.js'
 
 describe('resolveInferenceConfig', () => {
   test('returns a built-in Claude default when no config is present', () => {
-    const resolved = resolveInferenceConfig({})
+    const resolved = resolveInferenceConfig({
+      allowBuiltinOfficialFallback: true,
+      inference: {
+        version: 1,
+        identity: {
+          claude: {
+            enabled: true,
+          },
+        },
+      },
+    })
 
-    expect(resolved.source).toBe('default')
+    expect(resolved.source).toBe('inference')
     expect(resolved.selectedEndpoint).toMatchObject({
       authMode: 'claude_oauth',
       id: 'claude-official',
@@ -15,9 +25,20 @@ describe('resolveInferenceConfig', () => {
       transport: 'direct',
     })
     expect(resolved.defaultModelId).toBe(ALL_MODEL_CONFIGS.sonnet46.firstParty)
-    expect(resolved.selectedModel.remoteModel).toBe(
+    expect(resolved.selectedModel?.remoteModel).toBe(
       ALL_MODEL_CONFIGS.sonnet46.firstParty,
     )
+  })
+
+  test('does not inject Official account without endpoints or official auth', () => {
+    const resolved = resolveInferenceConfig({})
+
+    expect(resolved.source).toBe('default')
+    expect(resolved.endpoints).toEqual([])
+    expect(resolved.models).toEqual([])
+    expect(resolved.selectedEndpoint).toBeNull()
+    expect(resolved.selectedModel).toBeNull()
+    expect(resolved.defaultModelId).toBeNull()
   })
 
   test('imports settings.api into a direct OpenAI-compatible endpoint', () => {
@@ -42,7 +63,7 @@ describe('resolveInferenceConfig', () => {
       transport: 'direct',
     })
     expect(resolved.defaultModelId).toBe('gpt-4.1-mini')
-    expect(resolved.selectedModel.remoteModel).toBe('gpt-4.1-mini')
+    expect(resolved.selectedModel?.remoteModel).toBe('gpt-4.1-mini')
   })
 
   test('imports OpenAI runtime metadata needed for client construction', () => {
@@ -61,7 +82,7 @@ describe('resolveInferenceConfig', () => {
       },
     })
 
-    expect(resolved.selectedEndpoint.metadata).toEqual({
+    expect(resolved.selectedEndpoint?.metadata).toEqual({
       apiFormat: 'responses',
       apiKeyHeader: 'x-api-key',
       apiKeyScheme: 'Token',
@@ -86,7 +107,7 @@ describe('resolveInferenceConfig', () => {
       protocol: 'anthropic',
       transport: 'direct',
     })
-    expect(resolved.selectedModel.remoteModel).toBe('claude-sonnet-4-5')
+    expect(resolved.selectedModel?.remoteModel).toBe('claude-sonnet-4-5')
   })
 
   test('maps top-level settings.model to defaults.modelId during legacy import', () => {
@@ -101,7 +122,7 @@ describe('resolveInferenceConfig', () => {
 
     expect(resolved.source).toBe('settingsApi')
     expect(resolved.config.defaults?.modelId).toBe('gpt-5-mini')
-    expect(resolved.selectedModel.id).toBe('gpt-5-mini')
+    expect(resolved.selectedModel?.id).toBe('gpt-5-mini')
     expect(resolved.models.map(model => model.id)).toEqual(
       expect.arrayContaining(['gpt-5-mini']),
     )
@@ -147,8 +168,8 @@ describe('resolveInferenceConfig', () => {
     })
 
     expect(resolved.source).toBe('inference')
-    expect(resolved.selectedEndpoint.id).toBe('custom-endpoint')
-    expect(resolved.selectedModel.id).toBe('override-model')
+    expect(resolved.selectedEndpoint?.id).toBe('custom-endpoint')
+    expect(resolved.selectedModel?.id).toBe('override-model')
   })
 
   test('imports transport-aware legacy Bedrock config', () => {
@@ -168,10 +189,10 @@ describe('resolveInferenceConfig', () => {
       transport: 'bedrock',
       protocol: 'anthropic',
     })
-    expect(resolved.selectedEndpoint.metadata).toEqual({
+    expect(resolved.selectedEndpoint?.metadata).toEqual({
       awsRegion: 'us-west-2',
     })
-    expect(resolved.selectedModel.remoteModel).toBe(
+    expect(resolved.selectedModel?.remoteModel).toBe(
       ALL_MODEL_CONFIGS.sonnet45.bedrock,
     )
   })

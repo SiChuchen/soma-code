@@ -19,7 +19,7 @@ import type {
   ResolveInferenceConfigOptions,
 } from './types.js'
 
-const BUILTIN_ENDPOINT_ID = 'claude-official'
+export const BUILTIN_ENDPOINT_ID = 'claude-official'
 
 function trimValue(value: string | undefined | null): string | undefined {
   const trimmed = value?.trim()
@@ -318,6 +318,18 @@ function createBuiltInEndpoint(): ResolvedEndpoint {
   }
 }
 
+function shouldUseBuiltinOfficialFallback(
+  options: ResolveInferenceConfigOptions,
+  baseConfig: InferenceSettings,
+): boolean {
+  if (options.allowBuiltinOfficialFallback !== true) {
+    return false
+  }
+
+  const claudeIdentity = normalizeIdentity(baseConfig.identity)
+  return claudeIdentity?.enabled === true
+}
+
 function getBaseInferenceConfig(
   options: ResolveInferenceConfigOptions,
 ): {
@@ -378,7 +390,10 @@ export function resolveInferenceConfig(
       .filter(endpoint => endpoint.enabled),
   )
 
-  if (endpoints.length === 0) {
+  if (
+    endpoints.length === 0 &&
+    shouldUseBuiltinOfficialFallback(options, baseConfig)
+  ) {
     endpoints = [createBuiltInEndpoint()]
   }
 
@@ -412,7 +427,7 @@ export function resolveInferenceConfig(
 
   models = [...models, ...synthesizedModels]
 
-  if (models.length === 0) {
+  if (models.length === 0 && endpoints.length > 0) {
     const fallbackEndpoint = endpoints[0]
     const fallbackModelId =
       trimValue(fallbackEndpoint.defaultModelId) ??
@@ -457,8 +472,9 @@ export function resolveInferenceConfig(
     findModelByIdentifier(models, trimValue(options.selectedModelId)) ??
     inferredDefaultModel
   const selectedEndpoint =
-    endpoints.find(endpoint => endpoint.id === selectedModel.endpointId) ??
-    endpoints[0]
+    endpoints.find(endpoint => endpoint.id === selectedModel?.endpointId) ??
+    endpoints[0] ??
+    null
   const identity =
     normalizeIdentity(baseConfig.identity) ??
     (endpoints.some(
@@ -480,7 +496,7 @@ export function resolveInferenceConfig(
     endpoints,
     models,
     defaults: {
-      modelId: inferredDefaultModel.id,
+      modelId: inferredDefaultModel?.id,
     },
   }
 
@@ -490,8 +506,8 @@ export function resolveInferenceConfig(
     identity,
     endpoints,
     models,
-    defaultModelId: inferredDefaultModel.id,
-    selectedModelId: selectedModel.id,
+    defaultModelId: inferredDefaultModel?.id ?? null,
+    selectedModelId: selectedModel?.id ?? '',
     selectedModel,
     selectedEndpoint,
   }

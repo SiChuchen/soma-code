@@ -4,6 +4,7 @@ import {
   deriveInferenceModelPickerState,
   getInferenceModelDisplayLabel,
   normalizeInferenceModelSelection,
+  scopeInferenceModelPickerStateToEndpoint,
 } from './modelPicker.js'
 import {
   addInferenceConnection,
@@ -104,19 +105,86 @@ describe('inference model picker helpers', () => {
     ])
   })
 
+  test('matches configured legacy models case-insensitively by remote model', () => {
+    const state = deriveInferenceModelPickerState({
+      settingsApi: {
+        compatibility: 'openai',
+        mode: 'custom',
+        customName: 'MiniMax',
+        baseUrl: 'https://api.minimax.chat/v1',
+        model: 'MiniMax-M2.7',
+      },
+    })
+
+    expect(
+      normalizeInferenceModelSelection(
+        state.editableInference,
+        'minimax-m2.7',
+      ),
+    ).toBe('MiniMax-M2.7')
+    expect(
+      getInferenceModelDisplayLabel(state.editableInference, 'minimax-m2.7'),
+    ).toBe('MiniMax-M2.7')
+  })
+
+  test('scopes picker state to the active endpoint', () => {
+    const official = addInferenceConnection(undefined, 'official')
+    const glm = addInferenceConnection(official.inference, 'anthropic')
+    const inference = updateInferenceConnection(glm.inference, {
+      endpointId: glm.endpointId,
+      name: 'Zhipu GLM',
+      remoteModel: 'glm-5.1',
+    })
+    const state = deriveInferenceModelPickerState({
+      inference,
+    })
+    const scoped = scopeInferenceModelPickerStateToEndpoint(
+      state,
+      glm.endpointId,
+    )
+
+    expect(state.options).toEqual([
+      {
+        value: 'claude-official::claude-sonnet-4-6',
+        label: 'claude-sonnet-4-6',
+        description: 'Official account · claude-sonnet-4-6',
+        remoteModel: 'claude-sonnet-4-6',
+      },
+      {
+        value: 'anthropic::glm-5.1',
+        label: 'glm-5.1',
+        description: 'Zhipu GLM · glm-5.1',
+        remoteModel: 'glm-5.1',
+      },
+    ])
+    expect(scoped.options).toEqual([
+      {
+        value: 'anthropic::glm-5.1',
+        label: 'glm-5.1',
+        description: 'Zhipu GLM · glm-5.1',
+        remoteModel: 'glm-5.1',
+      },
+    ])
+    expect(scoped.editableInference.defaults?.modelId).toBe('anthropic::glm-5.1')
+  })
+
   test('does not synthesize picker options from only top-level settings.model', () => {
     const state = deriveInferenceModelPickerState({
       settingsModel: 'opus[1m]',
     })
 
     expect(state.shouldUseInferenceModelPicker).toBe(false)
-    expect(state.options).toEqual([
-      {
-        value: 'claude-sonnet-4-6',
-        label: 'claude-sonnet-4-6',
-        description: 'Official account · claude-sonnet-4-6',
-        remoteModel: 'claude-sonnet-4-6',
+    expect(state.options).toEqual([])
+  })
+
+  test('returns empty picker options for empty inference config', () => {
+    const state = deriveInferenceModelPickerState({
+      inference: {
+        version: 1,
       },
-    ])
+    })
+
+    expect(state.options).toEqual([])
+    expect(state.shouldUseInferenceModelPicker).toBe(false)
   })
 })

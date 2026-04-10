@@ -24,6 +24,7 @@ export type InferenceAuthMode =
   | 'chatgpt_oauth'
 
 export type ResolveInferenceConfigOptions = {
+  allowBuiltinOfficialFallback?: boolean
   inference?: InferenceSettings | null
   legacyEnv?: Record<string, string | undefined>
   selectedModelId?: string | null
@@ -82,7 +83,7 @@ export type ResolvedInferenceConfig = {
   endpoints: ResolvedEndpoint[]
   models: ResolvedModelEntry[]
   defaultModelId: string | null
-  selectedModelId: string
-  selectedModel: ResolvedModelEntry
-  selectedEndpoint: ResolvedEndpoint
+  selectedModelId: string | null
+  selectedModel: ResolvedModelEntry | null
+  selectedEndpoint: ResolvedEndpoint | null
 }

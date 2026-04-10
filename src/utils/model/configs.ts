@@ -8,6 +8,7 @@ export type ModelConfig = Record<APIProvider, ModelName>
 
 export const CLAUDE_3_7_SONNET_CONFIG = {
   firstParty: 'claude-3-7-sonnet-20250219',
+  anthropicCompatible: 'claude-3-7-sonnet',
   bedrock: 'us.anthropic.claude-3-7-sonnet-20250219-v1:0',
   vertex: 'claude-3-7-sonnet@20250219',
   foundry: 'claude-3-7-sonnet',
@@ -16,6 +17,7 @@ export const CLAUDE_3_7_SONNET_CONFIG = {
 
 export const CLAUDE_3_5_V2_SONNET_CONFIG = {
   firstParty: 'claude-3-5-sonnet-20241022',
+  anthropicCompatible: 'claude-3-5-sonnet',
   bedrock: 'anthropic.claude-3-5-sonnet-20241022-v2:0',
   vertex: 'claude-3-5-sonnet-v2@20241022',
   foundry: 'claude-3-5-sonnet',
@@ -24,6 +26,7 @@ export const CLAUDE_3_5_V2_SONNET_CONFIG = {
 
 export const CLAUDE_3_5_HAIKU_CONFIG = {
   firstParty: 'claude-3-5-haiku-20241022',
+  anthropicCompatible: 'claude-3-5-haiku',
   bedrock: 'us.anthropic.claude-3-5-haiku-20241022-v1:0',
   vertex: 'claude-3-5-haiku@20241022',
   foundry: 'claude-3-5-haiku',
@@ -32,6 +35,7 @@ export const CLAUDE_3_5_HAIKU_CONFIG = {
 
 export const CLAUDE_HAIKU_4_5_CONFIG = {
   firstParty: 'claude-haiku-4-5-20251001',
+  anthropicCompatible: 'claude-haiku-4-5',
   bedrock: 'us.anthropic.claude-haiku-4-5-20251001-v1:0',
   vertex: 'claude-haiku-4-5@20251001',
   foundry: 'claude-haiku-4-5',
@@ -40,6 +44,7 @@ export const CLAUDE_HAIKU_4_5_CONFIG = {
 
 export const CLAUDE_SONNET_4_CONFIG = {
   firstParty: 'claude-sonnet-4-20250514',
+  anthropicCompatible: 'claude-sonnet-4',
   bedrock: 'us.anthropic.claude-sonnet-4-20250514-v1:0',
   vertex: 'claude-sonnet-4@20250514',
   foundry: 'claude-sonnet-4',
@@ -48,6 +53,7 @@ export const CLAUDE_SONNET_4_CONFIG = {
 
 export const CLAUDE_SONNET_4_5_CONFIG = {
   firstParty: 'claude-sonnet-4-5-20250929',
+  anthropicCompatible: 'claude-sonnet-4-5',
   bedrock: 'us.anthropic.claude-sonnet-4-5-20250929-v1:0',
   vertex: 'claude-sonnet-4-5@20250929',
   foundry: 'claude-sonnet-4-5',
@@ -56,6 +62,7 @@ export const CLAUDE_SONNET_4_5_CONFIG = {
 
 export const CLAUDE_OPUS_4_CONFIG = {
   firstParty: 'claude-opus-4-20250514',
+  anthropicCompatible: 'claude-opus-4',
   bedrock: 'us.anthropic.claude-opus-4-20250514-v1:0',
   vertex: 'claude-opus-4@20250514',
   foundry: 'claude-opus-4',
@@ -64,6 +71,7 @@ export const CLAUDE_OPUS_4_CONFIG = {
 
 export const CLAUDE_OPUS_4_1_CONFIG = {
   firstParty: 'claude-opus-4-1-20250805',
+  anthropicCompatible: 'claude-opus-4-1',
   bedrock: 'us.anthropic.claude-opus-4-1-20250805-v1:0',
   vertex: 'claude-opus-4-1@20250805',
   foundry: 'claude-opus-4-1',
@@ -72,6 +80,7 @@ export const CLAUDE_OPUS_4_1_CONFIG = {
 
 export const CLAUDE_OPUS_4_5_CONFIG = {
   firstParty: 'claude-opus-4-5-20251101',
+  anthropicCompatible: 'claude-opus-4-5',
   bedrock: 'us.anthropic.claude-opus-4-5-20251101-v1:0',
   vertex: 'claude-opus-4-5@20251101',
   foundry: 'claude-opus-4-5',
@@ -80,6 +89,7 @@ export const CLAUDE_OPUS_4_5_CONFIG = {
 
 export const CLAUDE_OPUS_4_6_CONFIG = {
   firstParty: 'claude-opus-4-6',
+  anthropicCompatible: 'claude-opus-4-6',
   bedrock: 'us.anthropic.claude-opus-4-6-v1',
   vertex: 'claude-opus-4-6',
   foundry: 'claude-opus-4-6',
@@ -88,6 +98,7 @@ export const CLAUDE_OPUS_4_6_CONFIG = {
 
 export const CLAUDE_SONNET_4_6_CONFIG = {
   firstParty: 'claude-sonnet-4-6',
+  anthropicCompatible: 'claude-sonnet-4-6',
   bedrock: 'us.anthropic.claude-sonnet-4-6',
   vertex: 'claude-sonnet-4-6',
   foundry: 'claude-sonnet-4-6',

@@ -4,6 +4,7 @@ import { isEnvTruthy } from '../envUtils.js'
 
 export type APIProvider =
   | 'firstParty'
+  | 'anthropicCompatible'
   | 'bedrock'
   | 'vertex'
   | 'foundry'
@@ -37,7 +38,7 @@ function getLegacyAPIProvider(): APIProvider {
           ? 'openaiCompatible'
           : isFirstPartyLegacyBaseUrl()
             ? 'firstParty'
-            : 'openaiCompatible'
+            : 'anthropicCompatible'
 }
 
 export function getAPIProvider(): APIProvider {

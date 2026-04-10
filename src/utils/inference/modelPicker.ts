@@ -2,8 +2,14 @@ import type { ModelOption } from '../model/modelOptions.js'
 import type { InferenceSettings } from '../settings/types.js'
 import { resolveApiConfig } from '../settings/apiConfig.js'
 import type { DeepImmutable } from '../../types/utils.js'
-import { buildEditableInferenceSettings } from './registry.js'
-import { hasInferenceModelInventory, resolveInferenceConfig } from './resolve.js'
+import {
+  buildEditableInferenceSettings,
+  cloneInferenceSettings,
+} from './registry.js'
+import {
+  hasInferenceModelInventory,
+  resolveInferenceConfig,
+} from './resolve.js'
 import type { ResolveInferenceConfigOptions } from './types.js'
 
 export type InferenceModelPickerOption = ModelOption & {
@@ -46,18 +52,74 @@ function findConfiguredModel(
   identifier: string,
 ) {
   const resolved = resolveInferenceConfig({
+    allowBuiltinOfficialFallback: false,
     inference: inference as InferenceSettings | null | undefined,
   })
   const normalizedIdentifier = normalizeIdentifier(identifier)
 
   return resolved.models.find(
     model =>
-      model.id === identifier ||
-      model.remoteModel === identifier ||
+      normalizeIdentifier(model.id) === normalizedIdentifier ||
+      normalizeIdentifier(model.remoteModel) === normalizedIdentifier ||
       model.aliases.some(
         alias => normalizeIdentifier(alias) === normalizedIdentifier,
       ),
   )
+}
+
+function scopeInferenceToEndpoint(
+  inference: InferenceSettingsSnapshot,
+  endpointId: string | null | undefined,
+): InferenceSettings {
+  const scopedEndpointId = trimValue(endpointId)
+  const next = cloneInferenceSettings(
+    inference as InferenceSettings | null | undefined,
+  )
+
+  if (!scopedEndpointId) {
+    return next
+  }
+
+  const endpointIds = new Set(
+    (next.endpoints ?? [])
+      .map(endpoint => trimValue(endpoint.id))
+      .filter((value): value is string => value !== undefined),
+  )
+
+  if (!endpointIds.has(scopedEndpointId)) {
+    return next
+  }
+
+  const endpoints = (next.endpoints ?? []).filter(
+    endpoint => trimValue(endpoint.id) === scopedEndpointId,
+  )
+  const models = (next.models ?? []).filter(
+    model => trimValue(model.endpointId) === scopedEndpointId,
+  )
+  const defaultModelId = trimValue(next.defaults?.modelId)
+  const scopedDefaultModelId =
+    defaultModelId &&
+    models.some(
+      model =>
+        trimValue(model.id) === defaultModelId ||
+        trimValue(model.remoteModel) === defaultModelId,
+    )
+      ? defaultModelId
+      : trimValue(endpoints[0]?.defaultModelId) ?? trimValue(models[0]?.id)
+
+  return {
+    ...next,
+    endpoints,
+    models,
+    ...(scopedDefaultModelId !== undefined
+      ? {
+          defaults: {
+            ...(next.defaults ?? {}),
+            modelId: scopedDefaultModelId,
+          },
+        }
+      : {}),
+  }
 }
 
 export function buildInferenceModelPickerOptions(
@@ -68,6 +130,7 @@ export function buildInferenceModelPickerOptions(
   }
 
   const resolved = resolveInferenceConfig({
+    allowBuiltinOfficialFallback: false,
     inference: inference as InferenceSettings | null | undefined,
   })
 
@@ -90,9 +153,13 @@ export function deriveInferenceModelPickerState(
 ): DerivedInferenceModelPickerState {
   const editableInference = hasInferenceModelInventory(options.inference)
     ? buildEditableInferenceSettings({
+        ...options,
+        allowBuiltinOfficialFallback: false,
         inference: options.inference,
       })
     : buildEditableInferenceSettings({
+        ...options,
+        allowBuiltinOfficialFallback: false,
         legacyEnv: options.legacyEnv,
         settingsApi: options.settingsApi,
       })
@@ -113,6 +180,26 @@ export function deriveInferenceModelPickerState(
   }
 }
 
+export function scopeInferenceModelPickerStateToEndpoint(
+  state: DerivedInferenceModelPickerState,
+  endpointId: string | null | undefined,
+): DerivedInferenceModelPickerState {
+  if (!state.shouldUseInferenceModelPicker) {
+    return state
+  }
+
+  const editableInference = scopeInferenceToEndpoint(
+    state.editableInference,
+    endpointId,
+  )
+
+  return {
+    ...state,
+    editableInference,
+    options: buildInferenceModelPickerOptions(editableInference),
+  }
+}
+
 export function getInferenceModelDisplayLabel(
   inference: InferenceSettingsSnapshot,
   model: string | null | undefined,
@@ -124,8 +211,9 @@ export function getInferenceModelDisplayLabel(
   const selectedModel = trimValue(model)
   if (!selectedModel) {
     return resolveInferenceConfig({
+      allowBuiltinOfficialFallback: false,
       inference: inference as InferenceSettings | null | undefined,
-    }).selectedModel.label
+    }).selectedModel?.label
   }
 
   return findConfiguredModel(inference, selectedModel)?.label

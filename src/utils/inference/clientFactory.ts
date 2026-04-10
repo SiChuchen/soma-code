@@ -20,6 +20,7 @@ import type { ResolvedEndpoint, ResolvedModelEntry } from './types.js'
 
 export type InferenceClientProvider =
   | 'firstParty'
+  | 'anthropicCompatible'
   | 'bedrock'
   | 'vertex'
   | 'foundry'
@@ -35,6 +36,12 @@ export type OpenAICompatRuntimeConfig = {
   disableAuth?: boolean
   model?: string
   profile?: string
+}
+
+export type AnthropicCompatibleRuntimeConfig = {
+  apiKey?: string
+  baseUrl?: string
+  model?: string
 }
 
 type DirectTransportConfig = {
@@ -66,6 +73,7 @@ type FoundryTransportConfig = {
 }
 
 export type InferenceClientDescriptor = {
+  anthropicCompatible?: AnthropicCompatibleRuntimeConfig
   endpoint: ResolvedEndpoint
   endpointApiKey?: string
   model: ResolvedModelEntry
@@ -139,14 +147,25 @@ function getProviderForEndpoint(
     return 'foundry'
   }
 
-  // Only treat as firstParty when the endpoint actually points to Anthropic's
-  // official API.  Custom "anthropic-compatible" endpoints (e.g. minimax,
-  // SiliconFlow) must not trigger telemetry to api.anthropic.com.
   if (endpoint.protocol === 'openai') {
     return 'openaiCompatible'
   }
 
-  return isFirstPartyAnthropicBaseUrl(endpoint.baseUrl) ? 'firstParty' : 'openaiCompatible'
+  return isFirstPartyAnthropicBaseUrl(endpoint.baseUrl)
+    ? 'firstParty'
+    : 'anthropicCompatible'
+}
+
+function getAnthropicCompatibleRuntimeConfig(
+  endpoint: ResolvedEndpoint,
+  model: ResolvedModelEntry,
+  endpointApiKey: string | undefined,
+): AnthropicCompatibleRuntimeConfig {
+  return {
+    apiKey: endpointApiKey,
+    baseUrl: endpoint.baseUrl,
+    model: model.remoteModel,
+  }
 }
 
 function getOpenAICompatRuntimeConfig(
@@ -261,6 +280,11 @@ export function resolveInferenceClientDescriptor(options: {
   })
   const endpoint = route.selectedEndpoint
   const model = route.selectedModel
+
+  if (!endpoint || !model) {
+    throw new Error('No inference endpoint/model configured')
+  }
+
   const provider = getProviderForEndpoint(endpoint)
   const endpointCredential = getEndpointCredential(endpoint.id)
   const endpointApiKey =
@@ -269,6 +293,15 @@ export function resolveInferenceClientDescriptor(options: {
       : undefined
 
   return {
+    ...(provider === 'anthropicCompatible'
+      ? {
+          anthropicCompatible: getAnthropicCompatibleRuntimeConfig(
+            endpoint,
+            model,
+            endpointApiKey,
+          ),
+        }
+      : {}),
     endpoint,
     ...(endpointApiKey ? { endpointApiKey } : {}),
     model,

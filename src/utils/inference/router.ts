@@ -153,7 +153,13 @@ function getProviderForEndpoint(endpoint: ResolvedEndpoint): APIProvider {
     return 'foundry'
   }
 
-  return endpoint.protocol === 'openai' ? 'openaiCompatible' : 'firstParty'
+  if (endpoint.protocol === 'openai') {
+    return 'openaiCompatible'
+  }
+
+  return endpoint.baseUrl && endpoint.baseUrl !== 'https://api.anthropic.com'
+    ? 'anthropicCompatible'
+    : 'firstParty'
 }
 
 function getDefaultSonnetModelForEndpoint(endpoint: ResolvedEndpoint): string {
@@ -217,8 +223,8 @@ function findModelByIdentifier(
 
   return models.find(
     model =>
-      model.id === identifier ||
-      model.remoteModel === identifier ||
+      normalizeModelAlias(model.id) === normalizedIdentifier ||
+      normalizeModelAlias(model.remoteModel) === normalizedIdentifier ||
       model.aliases.some(
         alias => normalizeModelAlias(alias) === normalizedIdentifier,
       ),

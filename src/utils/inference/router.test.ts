@@ -188,6 +188,26 @@ describe('inference router', () => {
     )
   })
 
+  test('matches configured legacy models case-insensitively for session overrides', () => {
+    const route = resolveSelectedModelRoute({
+      sessionModel: 'minimax-m2.7',
+      settings: {
+        api: {
+          compatibility: 'openai',
+          mode: 'custom',
+          customName: 'MiniMax',
+          baseUrl: 'https://api.minimax.chat/v1',
+          model: 'MiniMax-M2.7',
+        },
+      },
+    })
+
+    expect(route.source).toBe('session')
+    expect(route.exactMatch).toBe(true)
+    expect(route.selectedEndpoint.name).toBe('MiniMax')
+    expect(route.selectedModel.remoteModel).toBe('MiniMax-M2.7')
+  })
+
   test('writes default-model patches to settings.model when no inference inventory exists', () => {
     expect(
       buildPersistedModelSettingsPatch(

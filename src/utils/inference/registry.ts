@@ -115,7 +115,12 @@ export function cloneInferenceSettings(
 export function buildEditableInferenceSettings(
   options: ResolveInferenceConfigOptions,
 ): InferenceSettings {
-  return cloneInferenceSettings(resolveInferenceConfig(options).config)
+  return cloneInferenceSettings(
+    resolveInferenceConfig({
+      ...options,
+      allowBuiltinOfficialFallback: false,
+    }).config,
+  )
 }
 
 export function buildInferenceSettingsWritePatch(

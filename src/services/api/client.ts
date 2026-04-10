@@ -160,6 +160,16 @@ export async function getAnthropicClient({
           'openai-compat',
       }
     : undefined
+  const anthropicCompatibleConfig = descriptor.anthropicCompatible
+    ? {
+        ...descriptor.anthropicCompatible,
+        apiKey:
+          apiKey ||
+          descriptor.anthropicCompatible.apiKey ||
+          descriptor.endpointApiKey ||
+          getAnthropicApiKey(),
+      }
+    : undefined
   const resolvedFetch = buildFetch(
     fetchOverride,
     source,
@@ -393,23 +403,27 @@ export async function getAnthropicClient({
   const directBaseUrl =
     descriptor.provider === 'openaiCompatible'
       ? getOpenAICompatBaseUrl(openAICompatConfig)
-      : process.env.USER_TYPE === 'ant' &&
-          isEnvTruthy(process.env.USE_STAGING_OAUTH) &&
-          descriptor.transportConfig.kind === 'direct' &&
-          descriptor.transportConfig.isFirstPartyAnthropicBaseUrl
-        ? getOauthConfig().BASE_API_URL
-        : descriptor.transportConfig.kind === 'direct'
-          ? descriptor.transportConfig.baseUrl
-          : undefined
+      : descriptor.provider === 'anthropicCompatible'
+        ? anthropicCompatibleConfig?.baseUrl
+        : process.env.USER_TYPE === 'ant' &&
+            isEnvTruthy(process.env.USE_STAGING_OAUTH) &&
+            descriptor.transportConfig.kind === 'direct' &&
+            descriptor.transportConfig.isFirstPartyAnthropicBaseUrl
+          ? getOauthConfig().BASE_API_URL
+          : descriptor.transportConfig.kind === 'direct'
+            ? descriptor.transportConfig.baseUrl
+            : undefined
 
   // Determine authentication method based on available tokens
   const clientConfig: ConstructorParameters<typeof Anthropic>[0] = {
     apiKey:
       descriptor.provider === 'openaiCompatible'
         ? openAICompatConfig?.apiKey || 'openai-compat'
-        : isClaudeAISubscriber()
-          ? null
-          : apiKey || descriptor.endpointApiKey || getAnthropicApiKey(),
+        : descriptor.provider === 'anthropicCompatible'
+          ? anthropicCompatibleConfig?.apiKey
+          : isClaudeAISubscriber()
+            ? null
+            : apiKey || descriptor.endpointApiKey || getAnthropicApiKey(),
     authToken: isClaudeAISubscriber()
       ? getClaudeAIOAuthTokens()?.accessToken
       : undefined,
